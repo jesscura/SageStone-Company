@@ -70,8 +70,11 @@ The build output will be in the `build/` directory.
    ```yaml
    # App Platform will auto-detect, but you can customize:
    build_command: npm run build
-   output_dir: build
+   run_command: npm start
+   http_port: 8080
    ```
+   
+   **Note:** The `npm start` command serves the built static files on port 8080, which is required for health checks.
 
 5. **Environment Variables** (if needed)
    - Add any required environment variables in the App Platform dashboard
@@ -407,14 +410,22 @@ If your application requires environment variables:
   - Verify asset paths in build output
   - Check server MIME types configuration
 
-#### 4. Build Fails on DigitalOcean
+#### 4. Health Check Failures on DigitalOcean App Platform
+- **Cause:** App not responding on the expected port (8080)
+- **Solution:**
+  - Ensure `run_command` is set to `npm start` in App Platform settings
+  - Verify the build completed successfully
+  - Check that `serve` package is installed (should be automatic with `npm install`)
+  - The `npm start` command serves static files on port 8080 for health checks
+
+#### 5. Build Fails on DigitalOcean
 - **Cause:** Insufficient memory or dependencies issue
 - **Solution:**
   - Increase App Platform plan size
   - Check build logs for specific errors
   - Verify package.json dependencies
 
-#### 5. Slow Loading on SharedHosting
+#### 6. Slow Loading on SharedHosting
 - **Cause:** Unoptimized assets or no compression
 - **Solution:**
   - Enable gzip compression in `.htaccess`

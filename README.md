@@ -12,6 +12,14 @@
   ## Building for Production
 
   Run `npm run build` to create a production build. The output will be in the `build/` directory.
+  
+  To serve the production build locally:
+  
+  ```bash
+  npm start
+  ```
+  
+  This will start a static file server on port 8080.
 
   ## Deployment
 
