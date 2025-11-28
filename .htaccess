@@ -2,6 +2,10 @@
   RewriteEngine On
   RewriteBase /
   
+  # Force HTTPS - redirect all HTTP requests to HTTPS
+  RewriteCond %{HTTPS} off
+  RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+  
   # Handle React Router - redirect all requests to index.html
   RewriteRule ^index\.html$ - [L]
   RewriteCond %{REQUEST_FILENAME} !-f
@@ -62,6 +66,9 @@
   
   # Prevent clickjacking
   Header set X-Frame-Options "SAMEORIGIN"
+  
+  # HTTP Strict Transport Security (HSTS) - Force HTTPS for 1 year
+  Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains"
   
   # Add cache control for static assets
   <FilesMatch "\.(js|css|jpg|jpeg|png|gif|webp|svg|woff|woff2|ttf|eot)$">
