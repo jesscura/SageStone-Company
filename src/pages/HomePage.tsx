@@ -351,7 +351,7 @@ export function HomePage({ onNavigate }: HomePageProps) {
                     </div>
                   )}
                   <blockquote className="text-[#1C1B20] mb-6 leading-relaxed">
-                    &quot;{testimonial.quote}&quot;
+                    "{testimonial.quote}"
                   </blockquote>
                   <div>
                     <p className="text-[#1C1B20]">{testimonial.author}</p>

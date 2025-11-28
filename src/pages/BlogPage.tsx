@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { Button } from "../components/ui/button";
 import { Badge } from "../components/ui/badge";
 import { Card } from "../components/ui/card";
@@ -6,6 +6,7 @@ import { ImageWithFallback } from "../components/figma/ImageWithFallback";
 import { Clock, User, ArrowRight, ArrowLeft, Search } from "lucide-react";
 import { ScrollAnimation } from "../components/ScrollAnimation";
 import { blogService, BlogPost, BlogCategory } from "../services/blogService";
+import { sanitizeHtmlSafe } from "../utils/sanitizeHtml";
 
 interface BlogPageProps {
   onNavigate: (page: string) => void;
@@ -156,7 +157,7 @@ export function BlogPage({ onNavigate }: BlogPageProps) {
           <ScrollAnimation animation="fadeInUp">
             <div
               className="prose prose-lg max-w-none text-[#1C1B20]"
-              dangerouslySetInnerHTML={{ __html: selectedPost.content }}
+              dangerouslySetInnerHTML={{ __html: sanitizeHtmlSafe(selectedPost.content) }}
               style={{
                 lineHeight: "1.8",
               }}

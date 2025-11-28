@@ -27,12 +27,13 @@ export interface BlogCategory {
   count: number;
 }
 
-// CMS Configuration - can be updated to connect to any headless CMS
+// CMS Configuration type - credentials should be provided via environment variables
+// when connecting to a real CMS provider
 interface CMSConfig {
   provider: 'contentful' | 'sanity' | 'strapi' | 'static';
-  apiUrl?: string;
-  spaceId?: string;
-  accessToken?: string;
+  // Note: In production, use environment variables for sensitive config:
+  // apiUrl: process.env.CMS_API_URL
+  // accessToken: process.env.CMS_ACCESS_TOKEN
 }
 
 // Default to static content for demo purposes
