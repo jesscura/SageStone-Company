@@ -23,5 +23,14 @@
 
   ## Deployment
 
-  This application is designed for deployment on Railway. Run `npm run build` to create a production build, then deploy to Railway.
+  This application is designed for deployment on Railway.
+
+  ### Railway Deployment Steps
+
+  1. Connect your GitHub repository to Railway
+  2. Railway will auto-detect the build settings:
+     - Build Command: `npm run build`
+     - Start Command: `npm start`
+  3. Add any required environment variables in Railway dashboard (prefix with `VITE_` for client-side variables)
+  4. Deploy and your application will be live
   
