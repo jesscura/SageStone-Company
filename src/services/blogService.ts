@@ -738,18 +738,29 @@ class BlogService {
 
   // Get all categories with post counts
   async getCategories(): Promise<BlogCategory[]> {
-    // Get all posts to compute categories
-    const { posts } = await this.getPosts();
+    // Fetch all posts using pagination to ensure accurate category counts
+    // Contentful API has a max limit of 1000 per request, default is 100
+    const allPosts: BlogPost[] = [];
+    const batchSize = 1000; // Contentful's maximum limit per request
+    let offset = 0;
+    let total = 0;
+
+    do {
+      const { posts, total: fetchedTotal } = await this.getPosts({ limit: batchSize, offset });
+      allPosts.push(...posts);
+      total = fetchedTotal;
+      offset += posts.length;
+    } while (offset < total && allPosts.length < total);
     
     const categoryMap = new Map<string, number>();
 
-    posts.forEach((post) => {
+    allPosts.forEach((post) => {
       const count = categoryMap.get(post.category) || 0;
       categoryMap.set(post.category, count + 1);
     });
 
     const categories: BlogCategory[] = [
-      { id: 'all', name: 'All', slug: 'all', count: posts.length },
+      { id: 'all', name: 'All', slug: 'all', count: allPosts.length },
     ];
 
     categoryMap.forEach((count, name) => {
