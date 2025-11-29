@@ -1,9 +1,42 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, useCallback } from 'react';
 
 interface UseScrollAnimationOptions {
   threshold?: number;
   rootMargin?: string;
   triggerOnce?: boolean;
+}
+
+// Shared observer cache for performance optimization
+// Uses a Map to cache observers by their configuration key
+const observerCache = new Map<string, IntersectionObserver>();
+const elementCallbacks = new Map<Element, (entry: IntersectionObserverEntry) => void>();
+
+function getObserverKey(threshold: number, rootMargin: string): string {
+  return `${threshold}-${rootMargin}`;
+}
+
+function getSharedObserver(
+  threshold: number,
+  rootMargin: string
+): IntersectionObserver {
+  const key = getObserverKey(threshold, rootMargin);
+  
+  if (!observerCache.has(key)) {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          const callback = elementCallbacks.get(entry.target);
+          if (callback) {
+            callback(entry);
+          }
+        });
+      },
+      { threshold, rootMargin }
+    );
+    observerCache.set(key, observer);
+  }
+  
+  return observerCache.get(key)!;
 }
 
 export function useScrollAnimation<T extends HTMLElement = HTMLDivElement>(
@@ -13,32 +46,32 @@ export function useScrollAnimation<T extends HTMLElement = HTMLDivElement>(
   const ref = useRef<T>(null);
   const [isVisible, setIsVisible] = useState(false);
 
+  const handleIntersection = useCallback((entry: IntersectionObserverEntry) => {
+    if (entry.isIntersecting) {
+      setIsVisible(true);
+      if (triggerOnce && ref.current) {
+        const observer = getSharedObserver(threshold, rootMargin);
+        observer.unobserve(ref.current);
+        elementCallbacks.delete(ref.current);
+      }
+    } else if (!triggerOnce) {
+      setIsVisible(false);
+    }
+  }, [triggerOnce, threshold, rootMargin]);
+
   useEffect(() => {
     const element = ref.current;
     if (!element) return;
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setIsVisible(true);
-            if (triggerOnce) {
-              observer.unobserve(element);
-            }
-          } else if (!triggerOnce) {
-            setIsVisible(false);
-          }
-        });
-      },
-      { threshold, rootMargin }
-    );
-
+    const observer = getSharedObserver(threshold, rootMargin);
+    elementCallbacks.set(element, handleIntersection);
     observer.observe(element);
 
     return () => {
       observer.unobserve(element);
+      elementCallbacks.delete(element);
     };
-  }, [threshold, rootMargin, triggerOnce]);
+  }, [threshold, rootMargin, handleIntersection]);
 
   return { ref, isVisible };
 }

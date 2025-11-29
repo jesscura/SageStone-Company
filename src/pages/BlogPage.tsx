@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo } from "react";
+import { useState, useEffect, useMemo, useCallback } from "react";
 import { Button } from "../components/ui/button";
 import { Badge } from "../components/ui/badge";
 import { Card } from "../components/ui/card";
@@ -53,7 +53,7 @@ export function BlogPage({ onNavigate }: BlogPageProps) {
     fetchRelated();
   }, [selectedPost]);
 
-  // Handle search
+  // Handle search with debounce
   useEffect(() => {
     const searchPosts = async () => {
       if (searchQuery.trim()) {
@@ -68,28 +68,54 @@ export function BlogPage({ onNavigate }: BlogPageProps) {
     return () => clearTimeout(debounceTimer);
   }, [searchQuery, activeCategory, loading]);
 
-  const handleCategoryChange = (category: string) => {
+  // Memoized callbacks for event handlers to prevent unnecessary re-renders
+  const handleCategoryChange = useCallback((category: string) => {
     setActiveCategory(category);
     setSearchQuery("");
     setVisiblePosts(6);
-  };
+  }, []);
 
-  const handlePostClick = (post: BlogPost) => {
+  const handlePostClick = useCallback((post: BlogPost) => {
     setSelectedPost(post);
     window.scrollTo({ top: 0, behavior: "smooth" });
-  };
+  }, []);
 
-  const handleBackToList = () => {
+  const handleBackToList = useCallback(() => {
     setSelectedPost(null);
-  };
+  }, []);
 
-  const handleLoadMore = () => {
+  const handleLoadMore = useCallback(() => {
     setVisiblePosts((prev) => prev + 6);
-  };
+  }, []);
 
-  const featuredPost = posts.find((p) => p.featured);
-  const regularPosts = posts.filter((p) => !p.featured);
-  const displayedPosts = regularPosts.slice(0, visiblePosts);
+  const handleSearchChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchQuery(e.target.value);
+  }, []);
+
+  // Memoize computed values to avoid recalculation on each render
+  const featuredPost = useMemo(() => posts.find((p) => p.featured), [posts]);
+  const regularPosts = useMemo(() => posts.filter((p) => !p.featured), [posts]);
+  const displayedPosts = useMemo(() => regularPosts.slice(0, visiblePosts), [regularPosts, visiblePosts]);
+
+  // Memoize sanitized content for the selected post
+  const sanitizedContent = useMemo(() => {
+    if (selectedPost?.content) {
+      return sanitizeHtmlSafe(selectedPost.content);
+    }
+    return '';
+  }, [selectedPost?.content]);
+
+  // Memoize formatted date for selected post
+  const formattedDate = useMemo(() => {
+    if (selectedPost?.publishedAt) {
+      return new Date(selectedPost.publishedAt).toLocaleDateString("en-US", {
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+      });
+    }
+    return '';
+  }, [selectedPost?.publishedAt]);
 
   // Single post view
   if (selectedPost) {
@@ -130,11 +156,7 @@ export function BlogPage({ onNavigate }: BlogPageProps) {
                   <span>{selectedPost.readTime}</span>
                 </div>
                 <time dateTime={selectedPost.publishedAt}>
-                  {new Date(selectedPost.publishedAt).toLocaleDateString("en-US", {
-                    year: "numeric",
-                    month: "long",
-                    day: "numeric",
-                  })}
+                  {formattedDate}
                 </time>
               </div>
             </ScrollAnimation>
@@ -157,7 +179,7 @@ export function BlogPage({ onNavigate }: BlogPageProps) {
           <ScrollAnimation animation="fadeInUp">
             <div
               className="prose prose-lg max-w-none text-[#1C1B20]"
-              dangerouslySetInnerHTML={{ __html: sanitizeHtmlSafe(selectedPost.content) }}
+              dangerouslySetInnerHTML={{ __html: sanitizedContent }}
               style={{
                 lineHeight: "1.8",
               }}
@@ -269,7 +291,7 @@ export function BlogPage({ onNavigate }: BlogPageProps) {
                 type="search"
                 placeholder="Search articles..."
                 value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
+                onChange={handleSearchChange}
                 className="w-full pl-12 pr-4 py-3 rounded-lg border border-[#E7E2EE] bg-white focus:outline-none focus:ring-2 focus:ring-[#B14EFF] focus:border-[#B14EFF]"
               />
             </div>

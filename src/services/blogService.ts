@@ -29,17 +29,120 @@ export interface BlogCategory {
 
 // CMS Configuration type - credentials should be provided via environment variables
 // when connecting to a real CMS provider
-interface CMSConfig {
+export interface CMSConfig {
   provider: 'contentful' | 'sanity' | 'strapi' | 'static';
-  // Note: In production, use environment variables for sensitive config:
-  // apiUrl: process.env.CMS_API_URL
-  // accessToken: process.env.CMS_ACCESS_TOKEN
+  // Contentful specific config
+  contentfulSpaceId?: string;
+  contentfulAccessToken?: string;
+  contentfulEnvironment?: string;
+  // Sanity specific config
+  sanityProjectId?: string;
+  sanityDataset?: string;
+  // Strapi specific config
+  strapiUrl?: string;
+  strapiToken?: string;
 }
 
-// Default to static content for demo purposes
-const config: CMSConfig = {
-  provider: 'static',
-};
+// Get config from environment variables or use defaults
+function getCMSConfig(): CMSConfig {
+  // Check for Contentful environment variables
+  const contentfulSpaceId = import.meta.env.VITE_CONTENTFUL_SPACE_ID;
+  const contentfulAccessToken = import.meta.env.VITE_CONTENTFUL_ACCESS_TOKEN;
+  const contentfulEnvironment = import.meta.env.VITE_CONTENTFUL_ENVIRONMENT || 'master';
+
+  if (contentfulSpaceId && contentfulAccessToken) {
+    return {
+      provider: 'contentful',
+      contentfulSpaceId,
+      contentfulAccessToken,
+      contentfulEnvironment,
+    };
+  }
+
+  // Check for Sanity environment variables
+  const sanityProjectId = import.meta.env.VITE_SANITY_PROJECT_ID;
+  const sanityDataset = import.meta.env.VITE_SANITY_DATASET;
+
+  if (sanityProjectId && sanityDataset) {
+    return {
+      provider: 'sanity',
+      sanityProjectId,
+      sanityDataset,
+    };
+  }
+
+  // Check for Strapi environment variables
+  const strapiUrl = import.meta.env.VITE_STRAPI_URL;
+  const strapiToken = import.meta.env.VITE_STRAPI_TOKEN;
+
+  if (strapiUrl) {
+    return {
+      provider: 'strapi',
+      strapiUrl,
+      strapiToken,
+    };
+  }
+
+  // Default to static content for demo purposes
+  return {
+    provider: 'static',
+  };
+}
+
+// Contentful response types
+interface ContentfulSys {
+  id: string;
+  createdAt: string;
+  updatedAt: string;
+}
+
+interface ContentfulAsset {
+  sys: ContentfulSys;
+  fields: {
+    title?: string;
+    file?: {
+      url: string;
+      details?: {
+        image?: {
+          width: number;
+          height: number;
+        };
+      };
+    };
+  };
+}
+
+interface ContentfulBlogPostFields {
+  title: string;
+  slug: string;
+  excerpt: string;
+  content: string;
+  category: string;
+  author: string;
+  authorImage?: ContentfulAsset;
+  readTime?: string;
+  featuredImage?: ContentfulAsset;
+  featured?: boolean;
+  tags?: string[];
+  metaTitle?: string;
+  metaDescription?: string;
+  publishedAt?: string;
+}
+
+interface ContentfulEntry<T> {
+  sys: ContentfulSys;
+  fields: T;
+}
+
+interface ContentfulResponse<T> {
+  items: ContentfulEntry<T>[];
+  total: number;
+  skip: number;
+  limit: number;
+  includes?: {
+    Asset?: ContentfulAsset[];
+  };
+}
 
 // Static blog posts for fallback/demo
 const staticPosts: BlogPost[] = [
@@ -366,10 +469,121 @@ const staticPosts: BlogPost[] = [
   },
 ];
 
-// Blog service class
+// Blog service class with CMS integration
 class BlogService {
-  private posts: BlogPost[] = staticPosts;
-  private config: CMSConfig = config;
+  private config: CMSConfig;
+  private cache: Map<string, { data: unknown; timestamp: number }> = new Map();
+  private cacheTimeout = 5 * 60 * 1000; // 5 minutes cache
+
+  constructor() {
+    this.config = getCMSConfig();
+  }
+
+  // Get current CMS provider for debugging/display
+  getProvider(): string {
+    return this.config.provider;
+  }
+
+  // Helper to check if cache is valid
+  private isCacheValid(key: string): boolean {
+    const cached = this.cache.get(key);
+    if (!cached) return false;
+    return Date.now() - cached.timestamp < this.cacheTimeout;
+  }
+
+  // Helper to get cached data
+  private getCached<T>(key: string): T | null {
+    if (this.isCacheValid(key)) {
+      return this.cache.get(key)?.data as T;
+    }
+    return null;
+  }
+
+  // Helper to set cache
+  private setCache(key: string, data: unknown): void {
+    this.cache.set(key, { data, timestamp: Date.now() });
+  }
+
+  // Fetch from Contentful API
+  private async fetchFromContentful<T>(
+    contentType: string,
+    query: Record<string, string | number | boolean> = {}
+  ): Promise<ContentfulResponse<T>> {
+    const { contentfulSpaceId, contentfulAccessToken, contentfulEnvironment } = this.config;
+    
+    const params = new URLSearchParams({
+      content_type: contentType,
+      ...Object.fromEntries(
+        Object.entries(query).map(([k, v]) => [k, String(v)])
+      ),
+    });
+
+    const url = `https://cdn.contentful.com/spaces/${contentfulSpaceId}/environments/${contentfulEnvironment}/entries?${params}`;
+
+    const response = await fetch(url, {
+      headers: {
+        Authorization: `Bearer ${contentfulAccessToken}`,
+      },
+    });
+
+    if (!response.ok) {
+      throw new Error(`Contentful API error: ${response.status}`);
+    }
+
+    return response.json();
+  }
+
+  // Transform Contentful entry to BlogPost
+  private transformContentfulEntry(
+    entry: ContentfulEntry<ContentfulBlogPostFields>,
+    includes?: { Asset?: ContentfulAsset[] }
+  ): BlogPost {
+    const { fields, sys } = entry;
+    
+    // Get image URL from included assets
+    let imageUrl = '';
+    if (fields.featuredImage && includes?.Asset) {
+      const asset = includes.Asset.find(
+        (a) => a.sys.id === (fields.featuredImage as unknown as { sys: { id: string } }).sys.id
+      );
+      if (asset?.fields?.file?.url) {
+        imageUrl = asset.fields.file.url.startsWith('//')
+          ? `https:${asset.fields.file.url}`
+          : asset.fields.file.url;
+      }
+    }
+
+    // Get author image URL
+    let authorImageUrl = '';
+    if (fields.authorImage && includes?.Asset) {
+      const asset = includes.Asset.find(
+        (a) => a.sys.id === (fields.authorImage as unknown as { sys: { id: string } }).sys.id
+      );
+      if (asset?.fields?.file?.url) {
+        authorImageUrl = asset.fields.file.url.startsWith('//')
+          ? `https:${asset.fields.file.url}`
+          : asset.fields.file.url;
+      }
+    }
+
+    return {
+      id: sys.id,
+      slug: fields.slug,
+      title: fields.title,
+      excerpt: fields.excerpt,
+      content: fields.content,
+      category: fields.category,
+      author: fields.author,
+      authorImage: authorImageUrl || undefined,
+      readTime: fields.readTime || '5 min read',
+      image: imageUrl,
+      publishedAt: fields.publishedAt || sys.createdAt,
+      featured: fields.featured || false,
+      tags: fields.tags || [],
+      metaTitle: fields.metaTitle,
+      metaDescription: fields.metaDescription,
+    };
+  }
 
   // Fetch all blog posts
   async getPosts(options?: {
@@ -378,9 +592,51 @@ class BlogService {
     offset?: number;
     featured?: boolean;
   }): Promise<{ posts: BlogPost[]; total: number }> {
-    // In a real implementation, this would fetch from the CMS API
-    // For now, we filter the static posts
-    let filteredPosts = [...this.posts];
+    // If using Contentful, fetch from API
+    if (this.config.provider === 'contentful') {
+      try {
+        const cacheKey = `posts-${JSON.stringify(options)}`;
+        const cached = this.getCached<{ posts: BlogPost[]; total: number }>(cacheKey);
+        if (cached) return cached;
+
+        const query: Record<string, string | number | boolean> = {
+          order: '-fields.publishedAt,-sys.createdAt',
+          include: 2, // Include linked assets
+        };
+
+        if (options?.limit) {
+          query.limit = options.limit;
+        }
+        if (options?.offset) {
+          query.skip = options.offset;
+        }
+        if (options?.category && options.category !== 'All') {
+          query['fields.category'] = options.category;
+        }
+        if (options?.featured !== undefined) {
+          query['fields.featured'] = options.featured;
+        }
+
+        const response = await this.fetchFromContentful<ContentfulBlogPostFields>(
+          'blogPost',
+          query
+        );
+
+        const posts = response.items.map((item) =>
+          this.transformContentfulEntry(item, response.includes)
+        );
+
+        const result = { posts, total: response.total };
+        this.setCache(cacheKey, result);
+        return result;
+      } catch (error) {
+        console.error('Error fetching from Contentful, falling back to static:', error);
+        // Fall through to static content
+      }
+    }
+
+    // Use static posts as fallback
+    let filteredPosts = [...staticPosts];
 
     if (options?.featured !== undefined) {
       filteredPosts = filteredPosts.filter((p) => p.featured === options.featured);
@@ -407,27 +663,84 @@ class BlogService {
 
   // Fetch a single blog post by slug
   async getPostBySlug(slug: string): Promise<BlogPost | null> {
-    const post = this.posts.find((p) => p.slug === slug);
+    if (this.config.provider === 'contentful') {
+      try {
+        const cacheKey = `post-slug-${slug}`;
+        const cached = this.getCached<BlogPost>(cacheKey);
+        if (cached) return cached;
+
+        const response = await this.fetchFromContentful<ContentfulBlogPostFields>(
+          'blogPost',
+          { 'fields.slug': slug, include: 2, limit: 1 }
+        );
+
+        if (response.items.length === 0) {
+          return null;
+        }
+
+        const post = this.transformContentfulEntry(
+          response.items[0],
+          response.includes
+        );
+        this.setCache(cacheKey, post);
+        return post;
+      } catch (error) {
+        console.error('Error fetching from Contentful:', error);
+        // Fall through to static content
+      }
+    }
+
+    const post = staticPosts.find((p) => p.slug === slug);
     return post || null;
   }
 
   // Fetch a single blog post by ID
   async getPostById(id: string): Promise<BlogPost | null> {
-    const post = this.posts.find((p) => p.id === id);
+    if (this.config.provider === 'contentful') {
+      try {
+        const cacheKey = `post-id-${id}`;
+        const cached = this.getCached<BlogPost>(cacheKey);
+        if (cached) return cached;
+
+        const response = await this.fetchFromContentful<ContentfulBlogPostFields>(
+          'blogPost',
+          { 'sys.id': id, include: 2, limit: 1 }
+        );
+
+        if (response.items.length === 0) {
+          return null;
+        }
+
+        const post = this.transformContentfulEntry(
+          response.items[0],
+          response.includes
+        );
+        this.setCache(cacheKey, post);
+        return post;
+      } catch (error) {
+        console.error('Error fetching from Contentful:', error);
+        // Fall through to static content
+      }
+    }
+
+    const post = staticPosts.find((p) => p.id === id);
     return post || null;
   }
 
   // Get all categories with post counts
   async getCategories(): Promise<BlogCategory[]> {
+    // Get all posts to compute categories
+    const { posts } = await this.getPosts();
+    
     const categoryMap = new Map<string, number>();
 
-    this.posts.forEach((post) => {
+    posts.forEach((post) => {
       const count = categoryMap.get(post.category) || 0;
       categoryMap.set(post.category, count + 1);
     });
 
     const categories: BlogCategory[] = [
-      { id: 'all', name: 'All', slug: 'all', count: this.posts.length },
+      { id: 'all', name: 'All', slug: 'all', count: posts.length },
     ];
 
     categoryMap.forEach((count, name) => {
@@ -444,8 +757,27 @@ class BlogService {
 
   // Search posts
   async searchPosts(query: string): Promise<BlogPost[]> {
+    if (this.config.provider === 'contentful') {
+      try {
+        const response = await this.fetchFromContentful<ContentfulBlogPostFields>(
+          'blogPost',
+          { 
+            query, // Contentful full-text search
+            include: 2,
+          }
+        );
+
+        return response.items.map((item) =>
+          this.transformContentfulEntry(item, response.includes)
+        );
+      } catch (error) {
+        console.error('Error searching Contentful:', error);
+        // Fall through to static content
+      }
+    }
+
     const lowerQuery = query.toLowerCase();
-    return this.posts.filter(
+    return staticPosts.filter(
       (post) =>
         post.title.toLowerCase().includes(lowerQuery) ||
         post.excerpt.toLowerCase().includes(lowerQuery) ||
@@ -458,20 +790,67 @@ class BlogService {
     const currentPost = await this.getPostById(postId);
     if (!currentPost) return [];
 
+    // For Contentful, fetch posts in the same category
+    if (this.config.provider === 'contentful') {
+      try {
+        const response = await this.fetchFromContentful<ContentfulBlogPostFields>(
+          'blogPost',
+          {
+            'fields.category': currentPost.category,
+            'sys.id[ne]': postId,
+            limit: limit,
+            include: 2,
+          }
+        );
+
+        const related = response.items.map((item) =>
+          this.transformContentfulEntry(item, response.includes)
+        );
+
+        // If not enough posts in the same category, fetch more
+        if (related.length < limit) {
+          const additionalResponse = await this.fetchFromContentful<ContentfulBlogPostFields>(
+            'blogPost',
+            {
+              'sys.id[nin]': [postId, ...related.map(p => p.id)].join(','),
+              limit: limit - related.length,
+              include: 2,
+            }
+          );
+
+          related.push(
+            ...additionalResponse.items.map((item) =>
+              this.transformContentfulEntry(item, additionalResponse.includes)
+            )
+          );
+        }
+
+        return related;
+      } catch (error) {
+        console.error('Error fetching related posts from Contentful:', error);
+        // Fall through to static content
+      }
+    }
+
     // Find posts in the same category, excluding the current post
-    const related = this.posts
+    const related = staticPosts
       .filter((p) => p.id !== postId && p.category === currentPost.category)
       .slice(0, limit);
 
     // If not enough related posts, add from other categories
     if (related.length < limit) {
-      const additional = this.posts
+      const additional = staticPosts
         .filter((p) => p.id !== postId && !related.includes(p))
         .slice(0, limit - related.length);
       related.push(...additional);
     }
 
     return related;
+  }
+
+  // Clear cache (useful for manual refresh)
+  clearCache(): void {
+    this.cache.clear();
   }
 }
 
