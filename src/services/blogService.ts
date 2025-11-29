@@ -112,6 +112,15 @@ interface ContentfulAsset {
   };
 }
 
+// Contentful linked asset reference (when resolved with includes)
+interface ContentfulAssetLink {
+  sys: {
+    type: 'Link';
+    linkType: 'Asset';
+    id: string;
+  };
+}
+
 interface ContentfulBlogPostFields {
   title: string;
   slug: string;
@@ -119,9 +128,9 @@ interface ContentfulBlogPostFields {
   content: string;
   category: string;
   author: string;
-  authorImage?: ContentfulAsset;
+  authorImage?: ContentfulAssetLink;
   readTime?: string;
-  featuredImage?: ContentfulAsset;
+  featuredImage?: ContentfulAssetLink;
   featured?: boolean;
   tags?: string[];
   metaTitle?: string;
@@ -544,7 +553,7 @@ class BlogService {
     let imageUrl = '';
     if (fields.featuredImage && includes?.Asset) {
       const asset = includes.Asset.find(
-        (a) => a.sys.id === (fields.featuredImage as unknown as { sys: { id: string } }).sys.id
+        (a) => a.sys.id === fields.featuredImage?.sys.id
       );
       if (asset?.fields?.file?.url) {
         imageUrl = asset.fields.file.url.startsWith('//')
@@ -557,7 +566,7 @@ class BlogService {
     let authorImageUrl = '';
     if (fields.authorImage && includes?.Asset) {
       const asset = includes.Asset.find(
-        (a) => a.sys.id === (fields.authorImage as unknown as { sys: { id: string } }).sys.id
+        (a) => a.sys.id === fields.authorImage?.sys.id
       );
       if (asset?.fields?.file?.url) {
         authorImageUrl = asset.fields.file.url.startsWith('//')
@@ -793,6 +802,8 @@ class BlogService {
     // For Contentful, fetch posts in the same category
     if (this.config.provider === 'contentful') {
       try {
+        // Contentful query syntax: 'sys.id[ne]' excludes a single ID
+        // See: https://www.contentful.com/developers/docs/references/content-delivery-api/#/reference/search-parameters/inequality-operator
         const response = await this.fetchFromContentful<ContentfulBlogPostFields>(
           'blogPost',
           {
@@ -808,6 +819,8 @@ class BlogService {
         );
 
         // If not enough posts in the same category, fetch more
+        // Note: Contentful uses 'sys.id[nin]' for "not in" array queries
+        // See: https://www.contentful.com/developers/docs/references/content-delivery-api/#/reference/search-parameters/array-with-multiple-values
         if (related.length < limit) {
           const additionalResponse = await this.fetchFromContentful<ContentfulBlogPostFields>(
             'blogPost',

@@ -17,8 +17,9 @@ export function ImageWithFallback(props: ImageWithFallbackProps) {
 
   const { src, alt, style, className, eager, loading, ...rest } = props
 
-  // Use lazy loading by default for performance, but allow eager loading
-  const loadingStrategy = loading ?? (eager ? 'eager' : 'lazy')
+  // Determine the HTML loading attribute value
+  // Use lazy loading by default for performance, but allow eager loading for above-the-fold images
+  const loadingAttribute = loading ?? (eager ? 'eager' : 'lazy')
 
   return didError ? (
     <div
@@ -35,7 +36,7 @@ export function ImageWithFallback(props: ImageWithFallbackProps) {
       alt={alt} 
       className={className} 
       style={style} 
-      loading={loadingStrategy}
+      loading={loadingAttribute}
       decoding="async"
       {...rest} 
       onError={handleError} 
