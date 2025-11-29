@@ -53,9 +53,12 @@
           "@vitejs/plugin-react-swc": "^3.10.2",
           "vite": "6.4.1"
       },
+      "engines": {
+          "node": ">=18.0.0"
+      },
       "scripts": {
           "dev": "vite",
           "build": "vite build",
-          "start": "serve -s build -l 8080"
+          "start": "serve -s build -l ${PORT:-8080}"
       }
   }
