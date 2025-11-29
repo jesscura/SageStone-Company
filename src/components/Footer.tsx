@@ -118,7 +118,7 @@ export function Footer({ onNavigate }: FooterProps) {
               </li>
               <li>
                 <button 
-                  onClick={() => onNavigate("about")}
+                  onClick={() => onNavigate("careers")}
                   className="text-[#E4D7FF] hover:text-white transition-colors"
                 >
                   Careers
@@ -155,9 +155,12 @@ export function Footer({ onNavigate }: FooterProps) {
                 </button>
               </li>
               <li>
-                <a href="#" className="text-[#E4D7FF] hover:text-white transition-colors">
-                  Documentation
-                </a>
+                <button 
+                  onClick={() => onNavigate("industries")}
+                  className="text-[#E4D7FF] hover:text-white transition-colors"
+                >
+                  Industries
+                </button>
               </li>
             </ul>
           </div>
@@ -166,8 +169,8 @@ export function Footer({ onNavigate }: FooterProps) {
         <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-[#E4D7FF]">
           <p>© 2025 SageStone Inc. All rights reserved.</p>
           <div className="flex gap-6">
-            <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
-            <a href="#" className="hover:text-white transition-colors">Terms of Service</a>
+            <button onClick={() => onNavigate("privacy")} className="hover:text-white transition-colors">Privacy Policy</button>
+            <button onClick={() => onNavigate("terms")} className="hover:text-white transition-colors">Terms of Service</button>
           </div>
         </div>
       </div>
