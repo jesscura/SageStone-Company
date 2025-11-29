@@ -483,6 +483,8 @@ class BlogService {
   private config: CMSConfig;
   private cache: Map<string, { data: unknown; timestamp: number }> = new Map();
   private cacheTimeout = 5 * 60 * 1000; // 5 minutes cache
+  // Contentful API max limit per request (used for pagination)
+  private static readonly CONTENTFUL_MAX_LIMIT = 1000;
 
   constructor() {
     this.config = getCMSConfig();
@@ -738,18 +740,34 @@ class BlogService {
 
   // Get all categories with post counts
   async getCategories(): Promise<BlogCategory[]> {
-    // Get all posts to compute categories
-    const { posts } = await this.getPosts();
+    // Fetch all posts using pagination to ensure accurate category counts
+    // Contentful API has a max limit of 1000 per request, default is 100
+    const allPosts: BlogPost[] = [];
+    const batchSize = BlogService.CONTENTFUL_MAX_LIMIT;
+    let offset = 0;
+    let total: number | null = null;
+
+    do {
+      const { posts, total: fetchedTotal } = await this.getPosts({ limit: batchSize, offset });
+      allPosts.push(...posts);
+      // Set total only once from the first request for consistency
+      if (total === null) {
+        total = fetchedTotal;
+      }
+      // Break if no posts returned to prevent infinite loop
+      if (posts.length === 0) break;
+      offset += batchSize;
+    } while (offset < total);
     
     const categoryMap = new Map<string, number>();
 
-    posts.forEach((post) => {
+    allPosts.forEach((post) => {
       const count = categoryMap.get(post.category) || 0;
       categoryMap.set(post.category, count + 1);
     });
 
     const categories: BlogCategory[] = [
-      { id: 'all', name: 'All', slug: 'all', count: posts.length },
+      { id: 'all', name: 'All', slug: 'all', count: allPosts.length },
     ];
 
     categoryMap.forEach((count, name) => {
