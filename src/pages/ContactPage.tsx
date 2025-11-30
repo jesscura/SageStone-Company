@@ -148,8 +148,8 @@ export function ContactPage({ onNavigate }: ContactPageProps) {
                     </div>
                     <div>
                       <h4 className="text-[#1C1B20] mb-1">Email</h4>
-                      <a href="mailto:hello@jesscura.com" className="text-[#6D6A73] hover:text-[#8E3AFF] transition-colors">
-                        hello@jesscura.com
+                      <a href="mailto:hello@sagestoneinc.com" className="text-[#6D6A73] hover:text-[#8E3AFF] transition-colors">
+                        hello@sagestoneinc.com
                       </a>
                       <p className="text-sm text-[#6D6A73] mt-1">
                         For general inquiries and support

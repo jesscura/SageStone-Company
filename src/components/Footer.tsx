@@ -63,7 +63,7 @@ export function Footer({ onNavigate }: FooterProps) {
             <div className="space-y-2 text-sm text-[#C4B8D4]">
               <div className="flex items-center gap-2">
                 <Mail className="w-4 h-4 text-[#B14EFF]" aria-hidden="true" />
-                <span>hello@sagestonelab.com</span>
+                <span>hello@sagestoneinc.com</span>
               </div>
               <div className="flex items-center gap-2">
                 <MapPin className="w-4 h-4 text-[#B14EFF]" aria-hidden="true" />
