@@ -18,35 +18,51 @@ export function Navigation({ currentPage, onNavigate }: NavigationProps) {
   ];
 
   return (
-    <nav className="sticky top-0 z-50 bg-white/90 backdrop-blur-lg border-b border-[#E7E2EE]" aria-label="Main navigation">
+    <nav 
+      className="sticky top-0 z-50 bg-white/95 backdrop-blur-lg border-b border-[#E7E2EE] shadow-sm transition-all duration-300" 
+      aria-label="Main navigation"
+      style={{ boxShadow: '0 2px 20px rgba(142, 58, 255, 0.08)' }}
+    >
       <div className="max-w-7xl mx-auto px-6">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <button 
             onClick={() => onNavigate("home")}
-            className="flex items-center gap-2 hover:opacity-80 transition-opacity"
+            className="flex items-center gap-3 hover:opacity-90 transition-all duration-200 group"
             aria-label="SageStone Inc - Go to homepage"
           >
-            <img src={image_6d38b07fe447faa80ae1170d286b77773d2ec3dc} alt="SageStone Inc logo" className="h-10 w-auto" />
-            <span className="text-xl font-bold text-[#1C1B20]">SageStone</span>
+            <div className="relative">
+              <img 
+                src={image_6d38b07fe447faa80ae1170d286b77773d2ec3dc} 
+                alt="SageStone Inc logo" 
+                className="h-10 w-auto transition-transform duration-200 group-hover:scale-105" 
+              />
+            </div>
+            <span className="text-xl font-bold text-[#1C1B20] tracking-tight">SageStone</span>
           </button>
 
           {/* Navigation Links */}
-          <div className="hidden lg:flex items-center gap-8" role="menubar">
+          <div className="hidden lg:flex items-center gap-1" role="menubar">
             {navItems.map((item) => (
               <button
                 key={item.page}
                 onClick={() => onNavigate(item.page)}
-                className={`transition-colors min-w-[44px] min-h-[44px] ${
+                className={`relative px-4 py-2 rounded-lg font-medium transition-all duration-200 min-w-[44px] min-h-[44px] ${
                   currentPage === item.page
-                    ? "text-[#8E3AFF]"
-                    : "text-[#6D6A73] hover:text-[#8E3AFF]"
+                    ? "text-[#8E3AFF] bg-[#F3E8FF]"
+                    : "text-[#6D6A73] hover:text-[#8E3AFF] hover:bg-[#F9F8FB]"
                 }`}
                 aria-label={`Navigate to ${item.label}`}
                 aria-current={currentPage === item.page ? "page" : undefined}
                 role="menuitem"
               >
                 {item.label}
+                {currentPage === item.page && (
+                  <span 
+                    className="absolute bottom-0 left-1/2 -translate-x-1/2 w-6 h-0.5 bg-gradient-to-r from-[#B14EFF] to-[#8E3AFF] rounded-full"
+                    aria-hidden="true"
+                  />
+                )}
               </button>
             ))}
           </div>
@@ -54,7 +70,7 @@ export function Navigation({ currentPage, onNavigate }: NavigationProps) {
           {/* CTA Button */}
           <Button 
             onClick={() => onNavigate("contact")}
-            className="gradient-bg text-white glow-button transition-lift hover-lift min-w-[44px] min-h-[44px]"
+            className="gradient-bg text-white glow-button transition-all duration-200 hover:scale-105 min-w-[44px] min-h-[44px] font-semibold"
             aria-label="Contact us - Let's talk about your project"
           >
             Let's Talk

@@ -17,8 +17,11 @@ import {
   Star
 } from "lucide-react";
 
-// Hero and About Us image with customer support representative
-const heroImage = "https://github.com/user-attachments/assets/e1f304d7-a7a6-4975-ae7c-b499bbdc3a67";
+// Hero image - Professional customer support team
+const heroImage = "https://images.unsplash.com/photo-1553877522-43269d4ea984?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjdXN0b21lciUyMHN1cHBvcnQlMjB0ZWFtfGVufDF8fHx8MTczMjk0MDAwMHww&ixlib=rb-4.1.0&q=80&w=1080";
+
+// About Us section image - Professional team collaboration
+const aboutImage = "https://images.unsplash.com/photo-1522071820081-009f0129c71c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx0ZWFtJTIwY29sbGFib3JhdGlvbiUyMG9mZmljZXxlbnwxfHx8fDE3MzI5NDAwMDB8MA&ixlib=rb-4.1.0&q=80&w=1080";
 
 interface HomePageProps {
   onNavigate: (page: string) => void;
@@ -186,9 +189,8 @@ export function HomePage({ onNavigate }: HomePageProps) {
               <div className="relative rounded-3xl overflow-hidden shadow-2xl">
                 <ImageWithFallback
                   src={heroImage}
-                  alt="Customer support representative with headset providing virtual assistance"
+                  alt="Professional team collaborating on customer support solutions"
                   className="w-full aspect-[4/3] object-cover"
-                  style={{ filter: 'hue-rotate(260deg) saturate(0.9)' }}
                   eager
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#8E3AFF]/30 to-transparent" aria-hidden="true" />
@@ -388,10 +390,9 @@ export function HomePage({ onNavigate }: HomePageProps) {
               <div className="relative">
                 <div className="relative rounded-3xl overflow-hidden shadow-2xl">
                   <ImageWithFallback
-                    src={heroImage}
+                    src={aboutImage}
                     alt="SageStone team delivering exceptional business process outsourcing services"
                     className="w-full aspect-[4/3] object-cover"
-                    style={{ filter: 'hue-rotate(260deg) saturate(0.9)' }}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#8E3AFF]/30 to-transparent" aria-hidden="true" />
                 </div>
