@@ -1,7 +1,6 @@
 import { Button } from "../components/ui/button";
 import { Badge } from "../components/ui/badge";
 import { Card } from "../components/ui/card";
-import { ImageWithFallback } from "../components/figma/ImageWithFallback";
 import { ScrollAnimation } from "../components/ScrollAnimation";
 import { 
   Sparkles, 
@@ -16,6 +15,7 @@ import {
   Home,
   Star
 } from "lucide-react";
+import teamImage from "figma:asset/73ebba38b0c336d4ff0cd35782588b2536f28ee3.png";
 
 interface HomePageProps {
   onNavigate: (page: string) => void;
@@ -181,8 +181,8 @@ export function HomePage({ onNavigate }: HomePageProps) {
             {/* Right Column - Authentic Photo */}
             <div className="relative">
               <div className="relative rounded-3xl overflow-hidden shadow-2xl">
-                <ImageWithFallback
-                  src="https://images.unsplash.com/photo-1758518731457-5ef826b75b3b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwcm9mZXNzaW9uYWwlMjBidXNpbmVzcyUyMHRlYW0lMjBjb2xsYWJvcmF0aW9ufGVufDF8fHx8MTc2MjcyODg5NXww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
+                <img
+                  src={teamImage}
                   alt="Professional business team collaborating in modern office workspace"
                   className="w-full aspect-[4/3] object-cover"
                 />
@@ -375,16 +375,16 @@ export function HomePage({ onNavigate }: HomePageProps) {
         </div>
       </section>
 
-      {/* Founder Section */}
+      {/* About Us Section */}
       <section className="py-20 lg:py-28 bg-gradient-to-br from-[#F3E8FF] to-white">
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <ScrollAnimation animation="fadeInLeft">
               <div className="relative">
                 <div className="relative rounded-3xl overflow-hidden shadow-2xl">
-                  <ImageWithFallback
-                    src="https://images.unsplash.com/photo-1623679116710-78b05d2fe2f3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtb2Rlcm4lMjBvZmZpY2UlMjB3b3Jrc3BhY2UlMjBkZXNrfGVufDF8fHx8MTc2MjcyMzEyNXww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
-                    alt="Modern office workspace showing professional business environment"
+                  <img
+                    src={teamImage}
+                    alt="SageStone team delivering exceptional business process outsourcing services"
                     className="w-full aspect-[4/3] object-cover"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#8E3AFF]/20 to-transparent" aria-hidden="true" />
@@ -394,26 +394,26 @@ export function HomePage({ onNavigate }: HomePageProps) {
 
             <ScrollAnimation animation="fadeInRight">
               <Badge className="mb-6 bg-white/90 text-[#8E3AFF] border-[#B14EFF]/30">
-                Meet the Founder
+                About Us
               </Badge>
               <h2 className="text-[#1C1B20] mb-4">
-                Built by operators who believe in <span className="gradient-text">better outsourcing</span>
+                Your trusted partner for <span className="gradient-text">business growth</span>
               </h2>
               <p className="text-lg text-[#6D6A73] leading-relaxed mb-6">
-                Founded by <strong>Jesel Cura</strong>, a Customer Success Manager and Director of Operations 
-                with 10 years of experience leading global teams.
+                SageStone Inc is a global BPO agency dedicated to helping businesses scale their operations efficiently. 
+                We specialize in customer support outsourcing, virtual assistance, and back-office solutions.
               </p>
               <p className="text-lg text-[#6D6A73] leading-relaxed mb-8">
-                Jesel&apos;s background in eCommerce, property management, and customer service inspired SageStone Inc — 
-                a BPO built for trust, not turnover. A company where accountability and partnership come first.
+                With a team of experienced professionals and a commitment to excellence, we deliver 
+                accountable people and efficient processes that help our clients achieve their goals.
               </p>
               <Button 
                 onClick={() => onNavigate("about")}
                 variant="outline"
                 className="border-[#B14EFF] text-[#8E3AFF] hover:bg-[#F3E8FF] min-w-[44px] min-h-[44px]"
-                aria-label="Learn our story"
+                aria-label="Learn more about us"
               >
-                Learn our story
+                Learn more about us
                 <ArrowRight className="w-4 h-4 ml-2" aria-hidden="true" />
               </Button>
             </ScrollAnimation>

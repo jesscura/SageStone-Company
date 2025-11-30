@@ -28,6 +28,7 @@ export function Navigation({ currentPage, onNavigate }: NavigationProps) {
             aria-label="SageStone Inc - Go to homepage"
           >
             <img src={image_6d38b07fe447faa80ae1170d286b77773d2ec3dc} alt="SageStone Inc logo" className="h-10 w-auto" />
+            <span className="text-xl font-bold text-[#1C1B20]">SageStone</span>
           </button>
 
           {/* Navigation Links */}
