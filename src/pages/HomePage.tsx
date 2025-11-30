@@ -2,6 +2,7 @@ import { Button } from "../components/ui/button";
 import { Badge } from "../components/ui/badge";
 import { Card } from "../components/ui/card";
 import { ScrollAnimation } from "../components/ScrollAnimation";
+import { ImageWithFallback } from "../components/figma/ImageWithFallback";
 import { 
   Sparkles, 
   ArrowRight, 
@@ -15,7 +16,9 @@ import {
   Home,
   Star
 } from "lucide-react";
-import teamImage from "figma:asset/73ebba38b0c336d4ff0cd35782588b2536f28ee3.png";
+
+// Hero and About Us image with customer support representative
+const heroImage = "https://github.com/user-attachments/assets/e1f304d7-a7a6-4975-ae7c-b499bbdc3a67";
 
 interface HomePageProps {
   onNavigate: (page: string) => void;
@@ -178,15 +181,17 @@ export function HomePage({ onNavigate }: HomePageProps) {
               </div>
             </div>
 
-            {/* Right Column - Authentic Photo */}
+            {/* Right Column - Hero Image */}
             <div className="relative">
               <div className="relative rounded-3xl overflow-hidden shadow-2xl">
-                <img
-                  src={teamImage}
-                  alt="Professional business team collaborating in modern office workspace"
+                <ImageWithFallback
+                  src={heroImage}
+                  alt="Customer support representative with headset providing virtual assistance"
                   className="w-full aspect-[4/3] object-cover"
+                  style={{ filter: 'hue-rotate(260deg) saturate(0.9)' }}
+                  eager
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#8E3AFF]/20 to-transparent" aria-hidden="true" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#8E3AFF]/30 to-transparent" aria-hidden="true" />
               </div>
               <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-gradient-to-br from-[#B14EFF] to-[#FF72E1] rounded-full blur-3xl opacity-30" aria-hidden="true" />
             </div>
@@ -382,12 +387,13 @@ export function HomePage({ onNavigate }: HomePageProps) {
             <ScrollAnimation animation="fadeInLeft">
               <div className="relative">
                 <div className="relative rounded-3xl overflow-hidden shadow-2xl">
-                  <img
-                    src={teamImage}
+                  <ImageWithFallback
+                    src={heroImage}
                     alt="SageStone team delivering exceptional business process outsourcing services"
                     className="w-full aspect-[4/3] object-cover"
+                    style={{ filter: 'hue-rotate(260deg) saturate(0.9)' }}
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#8E3AFF]/20 to-transparent" aria-hidden="true" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#8E3AFF]/30 to-transparent" aria-hidden="true" />
                 </div>
               </div>
             </ScrollAnimation>
