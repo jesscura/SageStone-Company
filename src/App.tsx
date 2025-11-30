@@ -56,7 +56,7 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-[#0A0118]">
       <Navigation
         currentPage={currentPage}
         onNavigate={handleNavigate}

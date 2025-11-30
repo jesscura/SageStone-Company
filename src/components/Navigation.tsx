@@ -1,6 +1,5 @@
 import image_6d38b07fe447faa80ae1170d286b77773d2ec3dc from 'figma:asset/6d38b07fe447faa80ae1170d286b77773d2ec3dc.png';
 import { Button } from "./ui/button";
-import logo from "figma:asset/1fa2c487b0dad34a92a63b9efa064728a81b6ae1.png";
 
 interface NavigationProps {
   currentPage: string;
@@ -19,7 +18,7 @@ export function Navigation({ currentPage, onNavigate }: NavigationProps) {
 
   return (
     <nav 
-      className="sticky top-0 z-50 bg-white/95 backdrop-blur-lg border-b border-[#E7E2EE] nav-shadow transition-all duration-300" 
+      className="sticky top-0 z-50 bg-[#0A0118]/95 backdrop-blur-lg border-b border-[#2A1B3D] transition-all duration-300" 
       aria-label="Main navigation"
     >
       <div className="max-w-7xl mx-auto px-6">
@@ -35,9 +34,10 @@ export function Navigation({ currentPage, onNavigate }: NavigationProps) {
                 src={image_6d38b07fe447faa80ae1170d286b77773d2ec3dc} 
                 alt="SageStone Inc logo" 
                 className="h-10 w-auto transition-transform duration-200 group-hover:scale-105" 
+                style={{ filter: 'brightness(0) invert(1)' }}
               />
             </div>
-            <span className="text-xl font-bold text-[#1C1B20] tracking-tight">SageStone</span>
+            <span className="text-xl font-bold text-white tracking-tight">SageStone</span>
           </button>
 
           {/* Navigation Links */}
@@ -48,8 +48,8 @@ export function Navigation({ currentPage, onNavigate }: NavigationProps) {
                 onClick={() => onNavigate(item.page)}
                 className={`relative px-4 py-2 rounded-lg font-medium transition-all duration-200 min-w-[44px] min-h-[44px] ${
                   currentPage === item.page
-                    ? "text-[#8E3AFF] bg-[#F3E8FF]"
-                    : "text-[#6D6A73] hover:text-[#8E3AFF] hover:bg-[#F9F8FB]"
+                    ? "text-[#B14EFF] bg-[#B14EFF]/10"
+                    : "text-[#C4B8D4] hover:text-[#B14EFF] hover:bg-[#2A1B3D]"
                 }`}
                 aria-label={`Navigate to ${item.label}`}
                 aria-current={currentPage === item.page ? "page" : undefined}
@@ -58,7 +58,7 @@ export function Navigation({ currentPage, onNavigate }: NavigationProps) {
                 {item.label}
                 {currentPage === item.page && (
                   <span 
-                    className="absolute bottom-0 left-1/2 -translate-x-1/2 w-6 h-0.5 bg-gradient-to-r from-[#B14EFF] to-[#8E3AFF] rounded-full"
+                    className="absolute bottom-0 left-1/2 -translate-x-1/2 w-6 h-0.5 bg-gradient-to-r from-[#B14EFF] to-[#00FF88] rounded-full"
                     aria-hidden="true"
                   />
                 )}
@@ -69,7 +69,7 @@ export function Navigation({ currentPage, onNavigate }: NavigationProps) {
           {/* CTA Button */}
           <Button 
             onClick={() => onNavigate("contact")}
-            className="gradient-bg text-white glow-button transition-all duration-200 hover:scale-105 min-w-[44px] min-h-[44px] font-semibold"
+            className="bg-[#00FF88] hover:bg-[#00DD77] text-[#0A0118] font-semibold transition-all duration-200 hover:scale-105 min-w-[44px] min-h-[44px]"
             aria-label="Contact us - Let's talk about your project"
           >
             Let's Talk

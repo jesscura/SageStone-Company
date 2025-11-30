@@ -186,18 +186,22 @@ export function ServicesPage({ onNavigate }: ServicesPageProps) {
   ];
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-[#0A0118]">
       {/* Hero Section */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-[#F3E8FF] via-white to-[#F9F8FB] py-20 lg:py-28">
-        <div className="max-w-7xl mx-auto px-6">
+      <section className="relative overflow-hidden bg-gradient-to-br from-[#0A0118] via-[#1A0B2E] to-[#0A0118] py-20 lg:py-28">
+        {/* Animated gradient orbs */}
+        <div className="absolute top-20 left-1/4 w-96 h-96 bg-[#B14EFF]/20 rounded-full blur-3xl animate-pulse" aria-hidden="true" />
+        <div className="absolute bottom-20 right-1/4 w-80 h-80 bg-[#00FF88]/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} aria-hidden="true" />
+        
+        <div className="relative max-w-7xl mx-auto px-6">
           <div className="max-w-3xl mx-auto text-center">
-            <Badge className="mb-6 bg-white/90 text-[#8E3AFF] border-[#B14EFF]/30">
+            <Badge className="mb-6 bg-[#B14EFF]/10 text-[#B14EFF] border-[#B14EFF]/30">
               Outsourced Operations & Customer Support Services
             </Badge>
-            <h1 className="text-[#1C1B20] mb-6">
-              Services designed for <span className="gradient-text">founders who want to focus on growth</span>
+            <h1 className="text-white mb-6">
+              Services designed for <span className="text-[#00FF88]">founders who want to focus on growth</span>
             </h1>
-            <p className="text-xl text-[#6D6A73] leading-relaxed">
+            <p className="text-xl text-[#C4B8D4] leading-relaxed">
               Our services are designed for founders who want to focus on growth while we handle 
               the operations that keep business running smoothly.
             </p>
@@ -206,7 +210,7 @@ export function ServicesPage({ onNavigate }: ServicesPageProps) {
       </section>
 
       {/* Services Detail */}
-      <section className="py-20 lg:py-28">
+      <section className="py-20 lg:py-28 bg-[#0A0118]">
         <div className="max-w-7xl mx-auto px-6 space-y-24">
           {services.map((service, index) => (
             <div 
@@ -217,45 +221,45 @@ export function ServicesPage({ onNavigate }: ServicesPageProps) {
             >
               <div className={index % 2 === 1 ? 'lg:order-2' : ''}>
                 <div className="flex items-center gap-3 mb-6">
-                  <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-[#B14EFF]/10 to-[#FF72E1]/10 flex items-center justify-center">
-                    <service.icon className="w-7 h-7 text-[#8E3AFF]" />
+                  <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-[#B14EFF]/20 to-[#00FF88]/10 flex items-center justify-center">
+                    <service.icon className="w-7 h-7 text-[#B14EFF]" />
                   </div>
                   <div>
-                    <h2 className="text-[#1C1B20]">{service.title}</h2>
+                    <h2 className="text-white">{service.title}</h2>
                   </div>
                 </div>
                 
-                <p className="text-lg text-[#8E3AFF] mb-4">
+                <p className="text-lg text-[#00FF88] mb-4">
                   {service.tagline}
                 </p>
 
-                <p className="text-lg text-[#6D6A73] mb-6 leading-relaxed">
+                <p className="text-lg text-[#C4B8D4] mb-6 leading-relaxed">
                   {service.description}
                 </p>
 
                 <div className="grid grid-cols-2 gap-4 mb-8">
                   {service.features.map((feature, i) => (
                     <div key={i} className="flex items-start gap-3">
-                      <div className="w-8 h-8 rounded-lg bg-[#F3E8FF] flex items-center justify-center shrink-0">
-                        <feature.icon className="w-4 h-4 text-[#8E3AFF]" />
+                      <div className="w-8 h-8 rounded-lg bg-[#B14EFF]/20 flex items-center justify-center shrink-0">
+                        <feature.icon className="w-4 h-4 text-[#B14EFF]" />
                       </div>
-                      <span className="text-sm text-[#1C1B20]">{feature.text}</span>
+                      <span className="text-sm text-white">{feature.text}</span>
                     </div>
                   ))}
                 </div>
 
                 <div className="grid grid-cols-3 gap-4 mb-8">
                   {service.metrics.map((metric, i) => (
-                    <div key={i} className="text-center p-4 rounded-xl bg-[#F9F8FB] border border-[#E7E2EE]">
-                      <div className="text-2xl gradient-text mb-1">{metric.value}</div>
-                      <div className="text-xs text-[#6D6A73]">{metric.label}</div>
+                    <div key={i} className="text-center p-4 rounded-xl bg-[#1A0B2E]/50 border border-[#2A1B3D]">
+                      <div className="text-2xl text-[#00FF88] font-bold mb-1">{metric.value}</div>
+                      <div className="text-xs text-[#C4B8D4]">{metric.label}</div>
                     </div>
                   ))}
                 </div>
 
                 <Button 
                   onClick={() => onNavigate("contact")}
-                  className="gradient-bg text-white glow-button transition-lift hover-lift min-w-[44px] min-h-[44px]"
+                  className="bg-[#00FF88] hover:bg-[#00DD77] text-[#0A0118] font-semibold transition-all hover:scale-105 min-w-[44px] min-h-[44px]"
                   aria-label="Get a tailored plan"
                 >
                   Get a Tailored Plan
@@ -264,13 +268,13 @@ export function ServicesPage({ onNavigate }: ServicesPageProps) {
               </div>
 
               <div className={index % 2 === 1 ? 'lg:order-1' : ''}>
-                <div className="relative rounded-3xl overflow-hidden shadow-xl">
+                <div className="relative rounded-3xl overflow-hidden border border-[#2A1B3D]">
                   <ImageWithFallback
                     src={service.image}
                     alt={service.title}
                     className="w-full aspect-[4/3] object-cover"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#8E3AFF]/20 to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0A0118]/80 to-transparent" />
                 </div>
               </div>
             </div>
@@ -279,13 +283,13 @@ export function ServicesPage({ onNavigate }: ServicesPageProps) {
       </section>
 
       {/* Why Choose SageStone */}
-      <section className="py-20 lg:py-28 bg-[#F9F8FB]">
+      <section className="py-20 lg:py-28 bg-gradient-to-b from-[#0A0118] to-[#1A0B2E]">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="text-[#1C1B20] mb-4">
-              Why choose <span className="gradient-text">SageStone Inc</span>
+            <h2 className="text-white mb-4">
+              Why choose <span className="text-[#00FF88]">SageStone Inc</span>
             </h2>
-            <p className="text-xl text-[#6D6A73]">
+            <p className="text-xl text-[#C4B8D4]">
               More than just outsourcing — a partnership built for your success
             </p>
           </div>
@@ -308,12 +312,12 @@ export function ServicesPage({ onNavigate }: ServicesPageProps) {
                 description: "Founded by operators with 10 years of experience building global teams."
               }
             ].map((feature, index) => (
-              <Card key={index} className="p-8 border-[#E7E2EE] hover:border-[#B14EFF]/30 transition-colors">
-                <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-[#B14EFF]/10 to-[#FF72E1]/10 flex items-center justify-center mb-6">
-                  <feature.icon className="w-7 h-7 text-[#8E3AFF]" />
+              <Card key={index} className="p-8 bg-[#1A0B2E]/50 border-[#2A1B3D] hover:border-[#B14EFF]/50 transition-colors">
+                <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-[#B14EFF]/20 to-[#00FF88]/10 flex items-center justify-center mb-6">
+                  <feature.icon className="w-7 h-7 text-[#B14EFF]" />
                 </div>
-                <h4 className="text-[#1C1B20] mb-3">{feature.title}</h4>
-                <p className="text-[#6D6A73] leading-relaxed">{feature.description}</p>
+                <h4 className="text-white mb-3">{feature.title}</h4>
+                <p className="text-[#C4B8D4] leading-relaxed">{feature.description}</p>
               </Card>
             ))}
           </div>
@@ -321,8 +325,8 @@ export function ServicesPage({ onNavigate }: ServicesPageProps) {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 lg:py-24 gradient-bg relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent" />
+      <section className="py-20 lg:py-24 bg-gradient-to-r from-[#B14EFF] via-[#8E3AFF] to-[#B14EFF] relative overflow-hidden">
+        <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%23ffffff\' fill-opacity=\'0.05\'%3E%3Ccircle cx=\'30\' cy=\'30\' r=\'2\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')]" aria-hidden="true" />
         <div className="relative max-w-4xl mx-auto px-6 text-center">
           <h2 className="text-white mb-6">
             Ready to build your team?
@@ -333,20 +337,20 @@ export function ServicesPage({ onNavigate }: ServicesPageProps) {
           <Button 
             size="lg"
             onClick={() => onNavigate("contact")}
-            className="bg-white !text-[#8E3AFF] hover:bg-white/90 transition-lift hover-lift"
+            className="bg-[#00FF88] hover:bg-[#00DD77] text-[#0A0118] font-semibold transition-all hover:scale-105"
           >
-            <span className="text-[#8E3AFF]">Let's build your remote operations team</span>
-            <ArrowRight className="w-4 h-4 ml-2 text-[#8E3AFF]" />
+            Let's build your remote operations team
+            <ArrowRight className="w-4 h-4 ml-2" />
           </Button>
         </div>
       </section>
 
       {/* SEO Footer */}
-      <section className="py-12 bg-white border-t border-[#E7E2EE]">
+      <section className="py-12 bg-[#0A0118] border-t border-[#2A1B3D]">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center">
-            <p className="text-sm text-[#6D6A73]">
-              <strong>SageStone Inc BPO Services:</strong> Customer support outsourcing, virtual assistant services, 
+            <p className="text-sm text-[#C4B8D4]">
+              <strong className="text-white">SageStone Inc BPO Services:</strong> Customer support outsourcing, virtual assistant services, 
               eCommerce customer service, Shopify support specialists, back-office solutions, and remote operations management 
               for Shopify merchants, property managers, startups, and service-based companies.
             </p>
