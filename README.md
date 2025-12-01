@@ -60,7 +60,7 @@ npm start
 
 ## Deployment
 
-### Railway Deployment (Recommended)
+### Railway Deployment
 
 This application is designed for deployment on Railway as a static site.
 
@@ -70,6 +70,19 @@ This application is designed for deployment on Railway as a static site.
    - Start Command: `npm start`
 3. **Environment Variables**: Add any required variables in the Railway dashboard (prefix with `VITE_` for client-side)
 4. **Deploy**: Push to deploy automatically
+
+### Cloudflare Pages Deployment
+
+This application is ready for deployment on Cloudflare Pages with SPA routing support.
+
+1. **Connect Repository**: Link your GitHub repository to Cloudflare Pages
+2. **Configure Build Settings**:
+   - Build Command: `npm run build`
+   - Build Output Directory: `build`
+3. **Environment Variables**: Add any required variables in the Cloudflare Pages dashboard (prefix with `VITE_` for client-side)
+4. **Deploy**: Push to deploy automatically
+
+**Note**: The `_redirects` and `_headers` files in `public/` are automatically included in the build to handle SPA routing and security headers.
 
 ### Alternative Static Hosting
 
