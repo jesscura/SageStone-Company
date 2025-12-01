@@ -111,10 +111,11 @@ export function HomePageHero({ onPrimaryClick, onSecondaryClick }: HomePageHeroP
   };
 
   // Floating metric cards for the right column
+  // Note: When value is empty/null, only the label is displayed as a headline
   const floatingMetrics = [
     {
       label: "100+ Success Stories",
-      value: "",
+      value: null as string | null,
       icon: Users,
       color: "#B14EFF"
     },
