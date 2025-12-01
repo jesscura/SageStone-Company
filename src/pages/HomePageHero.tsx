@@ -173,7 +173,7 @@ export function HomePageHero({ onPrimaryClick, onSecondaryClick }: HomePageHeroP
                 size="lg" 
                 onClick={handlePrimaryClick}
                 className="bg-[var(--color-primary-400)] hover:bg-primary text-white font-semibold transition-all hover:scale-105 min-w-[44px] min-h-[44px]"
-                aria-label="Book a call"
+                aria-label="Book a call with SageStone"
               >
                 Book a call
                 <ArrowRight className="w-4 h-4 ml-2" aria-hidden="true" />

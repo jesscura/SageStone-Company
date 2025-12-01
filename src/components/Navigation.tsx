@@ -70,9 +70,9 @@ export function Navigation({ currentPage, onNavigate }: NavigationProps) {
           <Button 
             onClick={() => onNavigate("contact")}
             className="bg-[var(--color-primary-400)] hover:bg-primary text-white font-semibold transition-all duration-200 hover:scale-105 min-w-[44px] min-h-[44px]"
-            aria-label="Contact us - Let's talk about your project"
+            aria-label="Book a call with SageStone"
           >
-            Let's Talk
+            Book a call
           </Button>
         </div>
       </div>
