@@ -343,7 +343,7 @@ export function AboutPage({ onNavigate }: AboutPageProps) {
               </h2>
             </ScrollAnimation>
             
-            <Card className="p-12 text-center bg-[var(--dark-bg-secondary)]/50 border-[var(--dark-surface)]" style={{ borderTopColor: '#B14EFF', borderTopWidth: '2px' }}>
+            <Card className="p-12 text-center bg-[var(--dark-bg-secondary)]/50 border-[var(--dark-surface)]" style={{ borderTopColor: 'var(--color-primary-400)', borderTopWidth: '2px' }}>
               <blockquote className="text-2xl text-white leading-relaxed mb-6">
                 "To empower growing businesses with <span className="text-[var(--color-primary-400)]">accountable people</span> and
                 <span className="text-[var(--color-primary-400)]"> efficient processes.</span>"

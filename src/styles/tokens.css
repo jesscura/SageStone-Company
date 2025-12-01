@@ -44,7 +44,7 @@
    * ================================================================= */
   --color-text: var(--foreground);
   --color-text-muted: var(--muted-foreground);
-  --color-text-light: var(--color-text-light);
+  /* Note: --color-text-light is defined directly in globals.css */
   --color-bg: var(--background);
   --color-bg-muted: var(--muted);
   --color-border: var(--border);
