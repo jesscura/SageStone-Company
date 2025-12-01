@@ -101,7 +101,7 @@ export function AboutPage({ onNavigate }: AboutPageProps) {
       <section className="relative overflow-hidden bg-gradient-to-br from-[#0A0118] via-[#1A0B2E] to-[#0A0118] py-20 lg:py-28">
         {/* Animated gradient orbs */}
         <div className="absolute top-20 right-1/4 w-96 h-96 bg-[#B14EFF]/20 rounded-full blur-3xl animate-pulse" aria-hidden="true" />
-        <div className="absolute bottom-20 left-1/4 w-80 h-80 bg-[#3DD6C4]/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} aria-hidden="true" />
+        <div className="absolute bottom-20 left-1/4 w-80 h-80 bg-[#B14EFF]/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} aria-hidden="true" />
         
         <div className="relative max-w-7xl mx-auto px-6">
           <div className="max-w-4xl mx-auto text-center">
@@ -109,7 +109,7 @@ export function AboutPage({ onNavigate }: AboutPageProps) {
               Meet Our Team of Experts
             </Badge>
             <h1 className="text-white mb-6">
-              A diverse team of <span className="text-[#3DD6C4]">operational, tech, and customer success</span> experts
+              A diverse team of <span className="text-[#B14EFF]">operational, tech, and customer success</span> experts
             </h1>
             <p className="text-xl text-[#C4B8D4] leading-relaxed">
               At Sagestone Inc., we are united by our passion for helping businesses scale smarter. 
@@ -126,7 +126,7 @@ export function AboutPage({ onNavigate }: AboutPageProps) {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {teamCredentials.map((stat, index) => (
               <div key={index} className="text-center">
-                <div className="text-3xl font-bold text-[#3DD6C4] mb-1">{stat.value}</div>
+                <div className="text-3xl font-bold text-[#B14EFF] mb-1">{stat.value}</div>
                 <p className="text-sm text-[#C4B8D4]">{stat.label}</p>
               </div>
             ))}
@@ -154,15 +154,15 @@ export function AboutPage({ onNavigate }: AboutPageProps) {
                   <h4 className="text-white mb-3">Team Credentials</h4>
                   <div className="space-y-2 text-sm text-[#C4B8D4]">
                     <div className="flex items-center gap-2">
-                      <Award className="w-4 h-4 text-[#3DD6C4]" />
+                      <Award className="w-4 h-4 text-[#B14EFF]" />
                       <span>Lean Six Sigma Certified</span>
                     </div>
                     <div className="flex items-center gap-2">
-                      <GraduationCap className="w-4 h-4 text-[#3DD6C4]" />
+                      <GraduationCap className="w-4 h-4 text-[#B14EFF]" />
                       <span>Advanced IT & PM Degrees</span>
                     </div>
                     <div className="flex items-center gap-2">
-                      <Globe className="w-4 h-4 text-[#3DD6C4]" />
+                      <Globe className="w-4 h-4 text-[#B14EFF]" />
                       <span>USA & Philippines Teams</span>
                     </div>
                   </div>
@@ -178,7 +178,7 @@ export function AboutPage({ onNavigate }: AboutPageProps) {
                 Our Story
               </Badge>
               <h2 className="text-white mb-6">
-                Built by operators who believe in <span className="text-[#3DD6C4]">better outsourcing</span>
+                Built by operators who believe in <span className="text-[#B14EFF]">better outsourcing</span>
               </h2>
               <div className="space-y-4 text-lg text-[#C4B8D4] leading-relaxed">
                 <p>
@@ -203,11 +203,11 @@ export function AboutPage({ onNavigate }: AboutPageProps) {
       <section className="py-20 lg:py-28 bg-gradient-to-b from-[#0A0118] to-[#1A0B2E]">
         <div className="max-w-7xl mx-auto px-6">
           <ScrollAnimation animation="fadeInUp" className="text-center max-w-3xl mx-auto mb-16">
-            <Badge className="mb-4 bg-[#3DD6C4]/10 text-[#3DD6C4] border-[#3DD6C4]/20">
+            <Badge className="mb-4 bg-[#B14EFF]/10 text-[#B14EFF] border-[#B14EFF]/20">
               Our Expertise
             </Badge>
             <h2 className="text-white mb-4">
-              Specialists who <span className="text-[#3DD6C4]">deliver results</span>
+              Specialists who <span className="text-[#B14EFF]">deliver results</span>
             </h2>
             <p className="text-xl text-[#C4B8D4]">
               Our team brings together expertise across multiple domains
@@ -218,7 +218,7 @@ export function AboutPage({ onNavigate }: AboutPageProps) {
             {expertiseAreas.map((area, index) => (
               <ScrollAnimation key={index} animation="fadeInUp" delay={index * 100}>
                 <Card className="p-6 bg-[#1A0B2E]/50 backdrop-blur-sm border-[#2A1B3D] hover:border-[#B14EFF]/50 transition-all text-center h-full group">
-                  <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-[#B14EFF]/20 to-[#3DD6C4]/10 flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform">
+                  <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-[#B14EFF]/20 to-[#8E3AFF]/10 flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform">
                     <area.icon className="w-8 h-8 text-[#B14EFF]" />
                   </div>
                   <h4 className="text-white mb-3">{area.title}</h4>
@@ -249,7 +249,7 @@ export function AboutPage({ onNavigate }: AboutPageProps) {
                 <div className="grid grid-cols-2 gap-3">
                   {industryExperience.map((industry, index) => (
                     <div key={index} className="flex items-center gap-2">
-                      <CheckCircle2 className="w-4 h-4 text-[#3DD6C4] shrink-0" />
+                      <CheckCircle2 className="w-4 h-4 text-[#B14EFF] shrink-0" />
                       <span className="text-sm text-[#C4B8D4]">{industry}</span>
                     </div>
                   ))}
@@ -261,8 +261,8 @@ export function AboutPage({ onNavigate }: AboutPageProps) {
             <ScrollAnimation animation="fadeInRight">
               <Card className="p-8 bg-[#0A0118]/50 border-[#2A1B3D] h-full">
                 <div className="flex items-center gap-3 mb-6">
-                  <div className="w-12 h-12 rounded-xl bg-[#3DD6C4]/20 flex items-center justify-center">
-                    <Award className="w-6 h-6 text-[#3DD6C4]" />
+                  <div className="w-12 h-12 rounded-xl bg-[#B14EFF]/20 flex items-center justify-center">
+                    <Award className="w-6 h-6 text-[#B14EFF]" />
                   </div>
                   <h3 className="text-white">Certifications & Training</h3>
                 </div>
@@ -272,7 +272,7 @@ export function AboutPage({ onNavigate }: AboutPageProps) {
                 <div className="space-y-3">
                   {certifications.map((cert, index) => (
                     <div key={index} className="flex items-center gap-2">
-                      <CheckCircle2 className="w-4 h-4 text-[#3DD6C4] shrink-0" />
+                      <CheckCircle2 className="w-4 h-4 text-[#B14EFF] shrink-0" />
                       <span className="text-sm text-[#C4B8D4]">{cert}</span>
                     </div>
                   ))}
@@ -291,7 +291,7 @@ export function AboutPage({ onNavigate }: AboutPageProps) {
               Global Reach
             </Badge>
             <h2 className="text-white mb-4">
-              Specialists from <span className="text-[#3DD6C4]">around the world</span>
+              Specialists from <span className="text-[#B14EFF]">around the world</span>
             </h2>
             <p className="text-xl text-[#C4B8D4]">
               Our team includes specialists from the USA and the Philippines with multinational exposure, 
@@ -312,7 +312,7 @@ export function AboutPage({ onNavigate }: AboutPageProps) {
 
             <ScrollAnimation animation="fadeInUp" delay={100}>
               <Card className="p-8 bg-[#1A0B2E]/50 border-[#2A1B3D] text-center h-full">
-                <Users className="w-12 h-12 text-[#3DD6C4] mx-auto mb-4" />
+                <Users className="w-12 h-12 text-[#8E3AFF] mx-auto mb-4" />
                 <h4 className="text-white mb-2">Diverse Expertise</h4>
                 <p className="text-sm text-[#C4B8D4]">
                   Multinational team with experience across cultures and business practices
@@ -339,14 +339,14 @@ export function AboutPage({ onNavigate }: AboutPageProps) {
           <div className="max-w-4xl mx-auto">
             <ScrollAnimation animation="fadeInUp" className="text-center mb-12">
               <h2 className="text-white mb-4">
-                Our <span className="text-[#3DD6C4]">mission</span>
+                Our <span className="text-[#B14EFF]">mission</span>
               </h2>
             </ScrollAnimation>
             
             <Card className="p-12 text-center bg-[#1A0B2E]/50 border-[#2A1B3D]" style={{ borderTopColor: '#B14EFF', borderTopWidth: '2px' }}>
               <blockquote className="text-2xl text-white leading-relaxed mb-6">
-                "To empower growing businesses with <span className="text-[#3DD6C4]">accountable people</span> and
-                <span className="text-[#3DD6C4]"> efficient processes.</span>"
+                "To empower growing businesses with <span className="text-[#B14EFF]">accountable people</span> and
+                <span className="text-[#B14EFF]"> efficient processes.</span>"
               </blockquote>
               <p className="text-lg text-[#C4B8D4] leading-relaxed">
                 SageStone Inc. is your partner for tailored virtual assistance, intelligent automation, 
@@ -362,7 +362,7 @@ export function AboutPage({ onNavigate }: AboutPageProps) {
         <div className="max-w-7xl mx-auto px-6">
           <ScrollAnimation animation="fadeInUp" className="text-center max-w-3xl mx-auto mb-16">
             <h2 className="text-white mb-4">
-              Our <span className="text-[#3DD6C4]">values</span>
+              Our <span className="text-[#B14EFF]">values</span>
             </h2>
             <p className="text-xl text-[#C4B8D4]">
               The principles that guide every decision we make
@@ -373,7 +373,7 @@ export function AboutPage({ onNavigate }: AboutPageProps) {
             {values.map((value, index) => (
               <ScrollAnimation key={index} animation="fadeInUp" delay={index * 100}>
                 <Card className="p-8 text-center bg-[#1A0B2E]/50 border-[#2A1B3D] hover:border-[#B14EFF]/50 transition-colors h-full">
-                  <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-[#B14EFF]/20 to-[#3DD6C4]/10 flex items-center justify-center mx-auto mb-6">
+                  <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-[#B14EFF]/20 to-[#8E3AFF]/10 flex items-center justify-center mx-auto mb-6">
                     <value.icon className="w-8 h-8 text-[#B14EFF]" />
                   </div>
                   <h4 className="text-white mb-3">{value.title}</h4>
@@ -393,7 +393,7 @@ export function AboutPage({ onNavigate }: AboutPageProps) {
               Core Skills
             </Badge>
             <h2 className="text-white mb-4">
-              What we <span className="text-[#3DD6C4]">bring to the table</span>
+              What we <span className="text-[#B14EFF]">bring to the table</span>
             </h2>
           </ScrollAnimation>
 
@@ -437,7 +437,7 @@ export function AboutPage({ onNavigate }: AboutPageProps) {
             <Button 
               size="lg"
               onClick={() => onNavigate("contact")}
-              className="bg-[#3DD6C4] hover:bg-[#35C0B0] text-[#0A0118] font-semibold transition-all hover:scale-105 min-w-[44px] min-h-[44px]"
+              className="bg-white hover:bg-white/90 text-[#B14EFF] font-semibold transition-all hover:scale-105 min-w-[44px] min-h-[44px]"
               aria-label="Start building your team"
             >
               Start your build

@@ -58,7 +58,7 @@ export function Navigation({ currentPage, onNavigate }: NavigationProps) {
                 {item.label}
                 {currentPage === item.page && (
                   <span 
-                    className="absolute bottom-0 left-1/2 -translate-x-1/2 w-6 h-0.5 bg-gradient-to-r from-[#B14EFF] to-[#3DD6C4] rounded-full"
+                    className="absolute bottom-0 left-1/2 -translate-x-1/2 w-6 h-0.5 bg-gradient-to-r from-[#B14EFF] to-[#8E3AFF] rounded-full"
                     aria-hidden="true"
                   />
                 )}
@@ -69,7 +69,7 @@ export function Navigation({ currentPage, onNavigate }: NavigationProps) {
           {/* CTA Button */}
           <Button 
             onClick={() => onNavigate("contact")}
-            className="bg-[#3DD6C4] hover:bg-[#35C0B0] text-[#0A0118] font-semibold transition-all duration-200 hover:scale-105 min-w-[44px] min-h-[44px]"
+            className="bg-[#B14EFF] hover:bg-[#9B3EEF] text-white font-semibold transition-all duration-200 hover:scale-105 min-w-[44px] min-h-[44px]"
             aria-label="Contact us - Let's talk about your project"
           >
             Let's Talk
