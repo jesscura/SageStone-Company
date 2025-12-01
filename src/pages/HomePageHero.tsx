@@ -1,18 +1,21 @@
 /**
  * HomePageHero - New positioning hero for SageStone Inc
  * 
- * Reference-inspired layout (image1): 
+ * Layout based on new SageStone hero direction (reference image1):
  * - Left column: Bold headline, subhead describing intelligent virtual support, and two CTAs
  * - Right column: Tall card with hero image placeholder and floating metric cards near bottom-right
  * - Subtle grid pattern in background for texture
  * 
- * Easily customizable elements:
- * - Headline/subhead text in the left column
- * - CTA button labels and actions
- * - Metric card content (label, value, status) 
- * - Hero image source in the right column
+ * Easily customizable elements for future experiments:
+ * - HEADLINE: "Empower your business with intelligent virtual support." (line ~159)
+ * - SUBHEAD: Concise paragraph about tailored support & virtual ops (line ~163)
+ * - PRIMARY CTA: "Book a call" button (line ~170)
+ * - SECONDARY CTA: "Learn more" button (line ~179)
+ * - METRIC CARDS: "100+ Success Stories" and "+65% ROI Boost" cards (floatingMetrics array ~111)
+ * - HERO IMAGE: Currently using placeholder visual; can swap in ImageWithFallback component
  * 
  * Uses framer-motion with reduced-motion support and analytics hooks.
+ * Analytics: hero_primary_cta_click, hero_secondary_cta_click with location: 'home_hero'
  */
 
 import { motion, useReducedMotion } from "framer-motion";
@@ -108,17 +111,18 @@ export function HomePageHero({ onPrimaryClick, onSecondaryClick }: HomePageHeroP
   };
 
   // Floating metric cards for the right column
+  // Note: When value is empty/null, only the label is displayed as a headline
   const floatingMetrics = [
     {
-      label: "Customer Satisfaction",
-      value: "+18%",
-      icon: TrendingUp,
+      label: "100+ Success Stories",
+      value: null as string | null,
+      icon: Users,
       color: "#B14EFF"
     },
     {
-      label: "Active Clients",
-      value: "50+",
-      icon: Users,
+      label: "Your Growth, Our Mission",
+      value: "+65% ROI Boost",
+      icon: TrendingUp,
       color: "#FF72E1"
     }
   ];
@@ -169,9 +173,9 @@ export function HomePageHero({ onPrimaryClick, onSecondaryClick }: HomePageHeroP
                 size="lg" 
                 onClick={handlePrimaryClick}
                 className="bg-[var(--color-primary-400)] hover:bg-primary text-white font-semibold transition-all hover:scale-105 min-w-[44px] min-h-[44px]"
-                aria-label="Book a strategy call"
+                aria-label="Book a call"
               >
-                Book a strategy call
+                Book a call
                 <ArrowRight className="w-4 h-4 ml-2" aria-hidden="true" />
               </Button>
               <Button 
@@ -179,9 +183,9 @@ export function HomePageHero({ onPrimaryClick, onSecondaryClick }: HomePageHeroP
                 variant="outline"
                 onClick={handleSecondaryClick}
                 className="border-[var(--color-primary-400)] text-[var(--color-primary-400)] hover:bg-[var(--color-primary-400)]/10 transition-all min-w-[44px] min-h-[44px]"
-                aria-label="See how it works"
+                aria-label="Learn more"
               >
-                See how it works
+                Learn more
               </Button>
             </motion.div>
 
@@ -242,8 +246,14 @@ export function HomePageHero({ onPrimaryClick, onSecondaryClick }: HomePageHeroP
                         <metric.icon className="w-4 h-4 lg:w-5 lg:h-5" style={{ color: metric.color }} aria-hidden="true" />
                       </div>
                       <div>
-                        <p className="text-xs text-[var(--dark-text-muted)]/70">{metric.label}</p>
-                        <p className="text-lg lg:text-xl font-bold text-white">{metric.value}</p>
+                        {metric.value ? (
+                          <>
+                            <p className="text-xs text-[var(--dark-text-muted)]/70">{metric.label}</p>
+                            <p className="text-lg lg:text-xl font-bold text-white">{metric.value}</p>
+                          </>
+                        ) : (
+                          <p className="text-sm lg:text-base font-semibold text-white">{metric.label}</p>
+                        )}
                       </div>
                     </div>
                   </Card>
