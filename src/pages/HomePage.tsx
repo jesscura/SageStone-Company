@@ -4,8 +4,8 @@ import { Card } from "../components/ui/card";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "../components/ui/accordion";
 import { ScrollAnimation } from "../components/ScrollAnimation";
 import { ImageWithFallback } from "../components/figma/ImageWithFallback";
+import { HomePageHero } from "./HomePageHero";
 import { 
-  Sparkles, 
   ArrowRight, 
   TrendingUp,
   DollarSign,
@@ -21,9 +21,6 @@ import {
   Bot,
   HelpCircle
 } from "lucide-react";
-
-// Hero image - Professional customer support team
-const heroImage = "https://images.unsplash.com/photo-1553877522-43269d4ea984?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjdXN0b21lciUyMHN1cHBvcnQlMjB0ZWFtfGVufDF8fHx8MTczMjk0MDAwMHww&ixlib=rb-4.1.0&q=80&w=1080";
 
 // About Us section image - Professional team collaboration
 const aboutImage = "https://images.unsplash.com/photo-1522071820081-009f0129c71c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx0ZWFtJTIwY29sbGFib3JhdGlvbiUyMG9mZmljZXxlbnwxfHx8fDE3MzI5NDAwMDB8MA&ixlib=rb-4.1.0&q=80&w=1080";
@@ -153,69 +150,13 @@ export function HomePage({ onNavigate }: HomePageProps) {
 
   return (
     <div className="min-h-screen bg-[#0A0118]">
-      {/* Hero Section - Dark Mode Premium */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-[#0A0118] via-[#1A0B2E] to-[#0A0118]">
-        {/* Animated gradient orbs */}
-        <div className="absolute top-20 left-1/4 w-96 h-96 bg-[#B14EFF]/20 rounded-full blur-3xl animate-pulse" aria-hidden="true" />
-        <div className="absolute bottom-20 right-1/4 w-80 h-80 bg-[#00FF88]/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} aria-hidden="true" />
-        
-        <div className="relative max-w-7xl mx-auto px-6 py-24 lg:py-32">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            {/* Left Column - Text Content */}
-            <div className="fade-in-up">
-              <Badge className="mb-6 bg-[#B14EFF]/10 text-[#B14EFF] border-[#B14EFF]/30 backdrop-blur-sm">
-                <Sparkles className="w-3 h-3 mr-1" aria-hidden="true" />
-                Virtual Support & Automation Solutions
-              </Badge>
-              
-              <h1 className="text-white mb-6">
-                Scale your operations <span className="text-[#00FF88]">40% faster</span> with tailored virtual support and automation.
-              </h1>
-              
-              <p className="text-xl text-[#C4B8D4] leading-relaxed mb-10">
-                We build dedicated remote teams that handle your customer support, admin, and back-office — so you can focus on growth.
-              </p>
-              
-              {/* CTAs */}
-              <div className="flex flex-wrap gap-4 mb-12">
-                <Button 
-                  size="lg" 
-                  onClick={() => onNavigate("contact")}
-                  className="bg-[#00FF88] hover:bg-[#00DD77] text-[#0A0118] font-semibold transition-all hover:scale-105 min-w-[44px] min-h-[44px]"
-                  aria-label="Book a free consultation"
-                >
-                  Book a Free Consultation
-                  <ArrowRight className="w-4 h-4 ml-2" aria-hidden="true" />
-                </Button>
-                <Button 
-                  size="lg" 
-                  variant="outline"
-                  onClick={() => onNavigate("how-it-works")}
-                  className="border-[#B14EFF] text-[#B14EFF] hover:bg-[#B14EFF]/10 transition-all min-w-[44px] min-h-[44px]"
-                  aria-label="See how it works"
-                >
-                  See How It Works
-                </Button>
-              </div>
-            </div>
-
-            {/* Right Column - Hero Image */}
-            <div className="relative">
-              <div className="relative rounded-3xl overflow-hidden border border-[#2A1B3D]">
-                <ImageWithFallback
-                  src={heroImage}
-                  alt="Customer support team collaborating on business solutions"
-                  className="w-full aspect-[4/3] object-cover"
-                  eager
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0A0118]/80 via-transparent to-transparent" aria-hidden="true" />
-              </div>
-              {/* Glow effect */}
-              <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-gradient-to-br from-[#B14EFF] to-[#00FF88] rounded-full blur-3xl opacity-30" aria-hidden="true" />
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* New Hero Section */}
+      <HomePageHero
+        onPrimaryClick={() => onNavigate("contact")}
+        onSecondaryClick={() => {
+          document.getElementById("how-it-works")?.scrollIntoView({ behavior: "smooth", block: "start" });
+        }}
+      />
 
       {/* Trust Signals Bar */}
       <section className="py-6 bg-[#1A0B2E]/50 border-y border-[#2A1B3D]">
@@ -257,7 +198,7 @@ export function HomePage({ onNavigate }: HomePageProps) {
       </section>
 
       {/* Who We Serve - Glass Effect Grid */}
-      <section className="py-20 lg:py-28 bg-[#0A0118]">
+      <section id="how-it-works" className="py-20 lg:py-28 bg-[#0A0118]">
         <div className="max-w-7xl mx-auto px-6">
           <ScrollAnimation animation="fadeInUp" className="text-center mb-16">
             <h2 className="text-white mb-4">Who we serve</h2>
