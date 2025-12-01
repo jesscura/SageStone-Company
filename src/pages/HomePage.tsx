@@ -49,7 +49,7 @@ export function HomePage({ onNavigate }: HomePageProps) {
       icon: ShoppingBag,
       title: "Shopify / E-com",
       description: "Store updates, orders, fulfillment, and returns handled by eCommerce experts.",
-      color: "#3DD6C4"
+      color: "#8E3AFF"
     },
     {
       icon: FileText,
@@ -67,7 +67,7 @@ export function HomePage({ onNavigate }: HomePageProps) {
       icon: Home,
       title: "Property Management",
       description: "Tenant communication, maintenance coordination, and leasing support.",
-      color: "#3DD6C4"
+      color: "#8E3AFF"
     },
     {
       icon: Bot,
@@ -170,32 +170,32 @@ export function HomePage({ onNavigate }: HomePageProps) {
           <div className="flex flex-wrap items-center justify-center gap-8 lg:gap-16">
             <div className="text-center">
               <div className="flex items-center gap-2 text-white mb-1">
-                <TrendingUp className="w-5 h-5 text-[#3DD6C4]" aria-hidden="true" />
-                <span className="text-2xl font-bold text-[#3DD6C4]">+18%</span>
+                <TrendingUp className="w-5 h-5 text-[#B14EFF]" aria-hidden="true" />
+                <span className="text-2xl font-bold text-[#B14EFF]">+18%</span>
               </div>
               <p className="text-xs text-[#C4B8D4]">CSAT Improvement</p>
             </div>
             <div className="hidden md:block w-px h-12 bg-[#2A1B3D]" aria-hidden="true" />
             <div className="text-center">
               <div className="flex items-center gap-2 text-white mb-1">
-                <DollarSign className="w-5 h-5 text-[#3DD6C4]" aria-hidden="true" />
-                <span className="text-2xl font-bold text-[#3DD6C4]">−35%</span>
+                <DollarSign className="w-5 h-5 text-[#B14EFF]" aria-hidden="true" />
+                <span className="text-2xl font-bold text-[#B14EFF]">−35%</span>
               </div>
               <p className="text-xs text-[#C4B8D4]">Cost Reduction</p>
             </div>
             <div className="hidden md:block w-px h-12 bg-[#2A1B3D]" aria-hidden="true" />
             <div className="text-center">
               <div className="flex items-center gap-2 text-white mb-1">
-                <Clock className="w-5 h-5 text-[#3DD6C4]" aria-hidden="true" />
-                <span className="text-2xl font-bold text-[#3DD6C4]">2 weeks</span>
+                <Clock className="w-5 h-5 text-[#B14EFF]" aria-hidden="true" />
+                <span className="text-2xl font-bold text-[#B14EFF]">2 weeks</span>
               </div>
               <p className="text-xs text-[#C4B8D4]">To Launch</p>
             </div>
             <div className="hidden md:block w-px h-12 bg-[#2A1B3D]" aria-hidden="true" />
             <div className="text-center">
               <div className="flex items-center gap-2 text-white mb-1">
-                <Users className="w-5 h-5 text-[#3DD6C4]" aria-hidden="true" />
-                <span className="text-2xl font-bold text-[#3DD6C4]">50+</span>
+                <Users className="w-5 h-5 text-[#B14EFF]" aria-hidden="true" />
+                <span className="text-2xl font-bold text-[#B14EFF]">50+</span>
               </div>
               <p className="text-xs text-[#C4B8D4]">Global Brands</p>
             </div>
@@ -217,7 +217,7 @@ export function HomePage({ onNavigate }: HomePageProps) {
             {whoWeServe.map((segment, index) => (
               <ScrollAnimation key={index} animation="fadeInUp" delay={index * 100}>
                 <Card className="p-6 bg-[#1A0B2E]/50 backdrop-blur-sm border-[#2A1B3D] hover:border-[#B14EFF]/50 transition-all duration-300 text-center h-full group">
-                  <div className="w-14 h-14 mx-auto mb-4 rounded-2xl bg-gradient-to-br from-[#B14EFF]/20 to-[#3DD6C4]/10 flex items-center justify-center group-hover:scale-110 transition-transform">
+                  <div className="w-14 h-14 mx-auto mb-4 rounded-2xl bg-gradient-to-br from-[#B14EFF]/20 to-[#8E3AFF]/10 flex items-center justify-center group-hover:scale-110 transition-transform">
                     <segment.icon className="w-7 h-7 text-[#B14EFF]" aria-hidden="true" />
                   </div>
                   <h4 className="text-white mb-2">{segment.title}</h4>
@@ -237,7 +237,7 @@ export function HomePage({ onNavigate }: HomePageProps) {
               Our Services
             </Badge>
             <h2 className="text-white mb-4">
-              Outsourced operations built for <span className="text-[#3DD6C4]">scale</span>
+              Outsourced operations built for <span className="text-[#B14EFF]">scale</span>
             </h2>
             <p className="text-xl text-[#C4B8D4]">
               We build teams that help businesses run smarter, not harder.
@@ -261,7 +261,7 @@ export function HomePage({ onNavigate }: HomePageProps) {
                   <p className="text-sm text-[#C4B8D4] mb-4">{service.description}</p>
                   <button 
                     onClick={() => onNavigate("services")}
-                    className="text-sm text-[#B14EFF] hover:text-[#3DD6C4] flex items-center gap-1 group/btn min-w-[44px] min-h-[44px]"
+                    className="text-sm text-[#B14EFF] hover:text-[#8E3AFF] flex items-center gap-1 group/btn min-w-[44px] min-h-[44px]"
                     aria-label={`Learn more about ${service.title}`}
                   >
                     Get a Tailored Plan
@@ -290,7 +290,7 @@ export function HomePage({ onNavigate }: HomePageProps) {
         <div className="max-w-7xl mx-auto px-6">
           <ScrollAnimation animation="fadeInUp" className="text-center max-w-3xl mx-auto mb-16">
             <h2 className="text-white mb-4">
-              Built on <span className="text-[#3DD6C4]">real results</span>
+              Built on <span className="text-[#B14EFF]">real results</span>
             </h2>
             <p className="text-xl text-[#C4B8D4]">
               Proven metrics from real client partnerships
@@ -302,7 +302,7 @@ export function HomePage({ onNavigate }: HomePageProps) {
               <Card className="p-8 text-center bg-[#0A0118]/50 border-[#2A1B3D] relative overflow-hidden h-full">
                 <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-[#B14EFF]/20 to-transparent rounded-full -mr-16 -mt-16" aria-hidden="true" />
                 <TrendingUp className="w-12 h-12 text-[#B14EFF] mx-auto mb-4" aria-hidden="true" />
-                <div className="text-5xl font-bold text-[#3DD6C4] mb-2">+18%</div>
+                <div className="text-5xl font-bold text-[#B14EFF] mb-2">+18%</div>
                 <div className="text-white mb-2">CSAT Uplift</div>
                 <p className="text-sm text-[#C4B8D4]">
                   Average customer satisfaction improvement with dedicated support teams
@@ -314,7 +314,7 @@ export function HomePage({ onNavigate }: HomePageProps) {
               <Card className="p-8 text-center bg-[#0A0118]/50 border-[#2A1B3D] relative overflow-hidden h-full">
                 <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-[#FF72E1]/20 to-transparent rounded-full -mr-16 -mt-16" aria-hidden="true" />
                 <DollarSign className="w-12 h-12 text-[#FF72E1] mx-auto mb-4" aria-hidden="true" />
-                <div className="text-5xl font-bold text-[#3DD6C4] mb-2">−35%</div>
+                <div className="text-5xl font-bold text-[#B14EFF] mb-2">−35%</div>
                 <div className="text-white mb-2">Cost to Serve</div>
                 <p className="text-sm text-[#C4B8D4]">
                   Reduction in operational costs without compromising quality
@@ -324,9 +324,9 @@ export function HomePage({ onNavigate }: HomePageProps) {
 
             <ScrollAnimation animation="fadeInUp" delay={200}>
               <Card className="p-8 text-center bg-[#0A0118]/50 border-[#2A1B3D] relative overflow-hidden h-full">
-                <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-[#3DD6C4]/20 to-transparent rounded-full -mr-16 -mt-16" aria-hidden="true" />
-                <Clock className="w-12 h-12 text-[#3DD6C4] mx-auto mb-4" aria-hidden="true" />
-                <div className="text-5xl font-bold text-[#3DD6C4] mb-2">2 weeks</div>
+                <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-[#8E3AFF]/20 to-transparent rounded-full -mr-16 -mt-16" aria-hidden="true" />
+                <Clock className="w-12 h-12 text-[#8E3AFF] mx-auto mb-4" aria-hidden="true" />
+                <div className="text-5xl font-bold text-[#B14EFF] mb-2">2 weeks</div>
                 <div className="text-white mb-2">Onboarding</div>
                 <p className="text-sm text-[#C4B8D4]">
                   From kickoff to fully operational team, ready to support your growth
@@ -345,7 +345,7 @@ export function HomePage({ onNavigate }: HomePageProps) {
               Client Success
             </Badge>
             <h2 className="text-white mb-4">
-              Your success story <span className="text-[#3DD6C4]">starts here</span>
+              Your success story <span className="text-[#B14EFF]">starts here</span>
             </h2>
             <p className="text-xl text-[#C4B8D4]">
               Real results from real partnerships
@@ -362,8 +362,8 @@ export function HomePage({ onNavigate }: HomePageProps) {
                     ))}
                   </div>
                   {testimonial.metric && (
-                    <div className="mb-4 px-4 py-2 bg-[#3DD6C4]/10 rounded-lg border border-[#3DD6C4]/20">
-                      <p className="text-sm text-[#3DD6C4] font-medium">{testimonial.metric}</p>
+                    <div className="mb-4 px-4 py-2 bg-[#B14EFF]/10 rounded-lg border border-[#B14EFF]/20">
+                      <p className="text-sm text-[#B14EFF] font-medium">{testimonial.metric}</p>
                     </div>
                   )}
                   <blockquote className="text-white mb-6 leading-relaxed">
@@ -415,7 +415,7 @@ export function HomePage({ onNavigate }: HomePageProps) {
                 About Us
               </Badge>
               <h2 className="text-white mb-4">
-                Your trusted partner for <span className="text-[#3DD6C4]">business growth</span>
+                Your trusted partner for <span className="text-[#B14EFF]">business growth</span>
               </h2>
               <p className="text-lg text-[#C4B8D4] leading-relaxed mb-6">
                 SageStone Inc is a global BPO agency dedicated to helping businesses scale their operations efficiently. 
@@ -503,7 +503,7 @@ export function HomePage({ onNavigate }: HomePageProps) {
               <Button 
                 size="lg"
                 onClick={() => onNavigate("contact")}
-                className="bg-[#3DD6C4] hover:bg-[#35C0B0] text-[#0A0118] font-semibold transition-all hover:scale-105 min-w-[44px] min-h-[44px]"
+                className="bg-white hover:bg-white/90 text-[#B14EFF] font-semibold transition-all hover:scale-105 min-w-[44px] min-h-[44px]"
                 aria-label="Start your build"
               >
                 Start your build

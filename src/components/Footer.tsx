@@ -79,7 +79,7 @@ export function Footer({ onNavigate }: FooterProps) {
               <li>
                 <button 
                   onClick={() => onNavigate("services")}
-                  className="text-[#C4B8D4] hover:text-[#3DD6C4] transition-colors"
+                  className="text-[#C4B8D4] hover:text-[#B14EFF] transition-colors"
                 >
                   Customer Support
                 </button>
@@ -87,7 +87,7 @@ export function Footer({ onNavigate }: FooterProps) {
               <li>
                 <button 
                   onClick={() => onNavigate("services")}
-                  className="text-[#C4B8D4] hover:text-[#3DD6C4] transition-colors"
+                  className="text-[#C4B8D4] hover:text-[#B14EFF] transition-colors"
                 >
                   Virtual Assistance
                 </button>
@@ -95,7 +95,7 @@ export function Footer({ onNavigate }: FooterProps) {
               <li>
                 <button 
                   onClick={() => onNavigate("services")}
-                  className="text-[#C4B8D4] hover:text-[#3DD6C4] transition-colors"
+                  className="text-[#C4B8D4] hover:text-[#B14EFF] transition-colors"
                 >
                   Shopify / E-commerce
                 </button>
@@ -103,7 +103,7 @@ export function Footer({ onNavigate }: FooterProps) {
               <li>
                 <button 
                   onClick={() => onNavigate("services")}
-                  className="text-[#C4B8D4] hover:text-[#3DD6C4] transition-colors"
+                  className="text-[#C4B8D4] hover:text-[#B14EFF] transition-colors"
                 >
                   Back-Office Operations
                 </button>
@@ -111,7 +111,7 @@ export function Footer({ onNavigate }: FooterProps) {
               <li>
                 <button 
                   onClick={() => onNavigate("services")}
-                  className="text-[#C4B8D4] hover:text-[#3DD6C4] transition-colors"
+                  className="text-[#C4B8D4] hover:text-[#B14EFF] transition-colors"
                 >
                   Property Management
                 </button>
@@ -119,7 +119,7 @@ export function Footer({ onNavigate }: FooterProps) {
               <li>
                 <button 
                   onClick={() => onNavigate("services")}
-                  className="text-[#C4B8D4] hover:text-[#3DD6C4] transition-colors"
+                  className="text-[#C4B8D4] hover:text-[#B14EFF] transition-colors"
                 >
                   Automation & AI
                 </button>
@@ -134,7 +134,7 @@ export function Footer({ onNavigate }: FooterProps) {
               <li>
                 <button 
                   onClick={() => onNavigate("about")}
-                  className="text-[#C4B8D4] hover:text-[#3DD6C4] transition-colors"
+                  className="text-[#C4B8D4] hover:text-[#B14EFF] transition-colors"
                 >
                   About Us
                 </button>
@@ -142,7 +142,7 @@ export function Footer({ onNavigate }: FooterProps) {
               <li>
                 <button 
                   onClick={() => onNavigate("how-it-works")}
-                  className="text-[#C4B8D4] hover:text-[#3DD6C4] transition-colors"
+                  className="text-[#C4B8D4] hover:text-[#B14EFF] transition-colors"
                 >
                   How It Works
                 </button>
@@ -150,7 +150,7 @@ export function Footer({ onNavigate }: FooterProps) {
               <li>
                 <button 
                   onClick={() => onNavigate("case-studies")}
-                  className="text-[#C4B8D4] hover:text-[#3DD6C4] transition-colors"
+                  className="text-[#C4B8D4] hover:text-[#B14EFF] transition-colors"
                 >
                   Case Studies
                 </button>
@@ -158,7 +158,7 @@ export function Footer({ onNavigate }: FooterProps) {
               <li>
                 <button 
                   onClick={() => onNavigate("careers")}
-                  className="text-[#C4B8D4] hover:text-[#3DD6C4] transition-colors"
+                  className="text-[#C4B8D4] hover:text-[#B14EFF] transition-colors"
                 >
                   Careers
                 </button>
@@ -166,7 +166,7 @@ export function Footer({ onNavigate }: FooterProps) {
               <li>
                 <button 
                   onClick={() => onNavigate("contact")}
-                  className="text-[#C4B8D4] hover:text-[#3DD6C4] transition-colors"
+                  className="text-[#C4B8D4] hover:text-[#B14EFF] transition-colors"
                 >
                   Contact Us
                 </button>
@@ -181,7 +181,7 @@ export function Footer({ onNavigate }: FooterProps) {
               <li>
                 <button 
                   onClick={() => onNavigate("pricing")}
-                  className="text-[#C4B8D4] hover:text-[#3DD6C4] transition-colors"
+                  className="text-[#C4B8D4] hover:text-[#B14EFF] transition-colors"
                 >
                   Pricing
                 </button>
@@ -189,7 +189,7 @@ export function Footer({ onNavigate }: FooterProps) {
               <li>
                 <button 
                   onClick={() => onNavigate("blog")}
-                  className="text-[#C4B8D4] hover:text-[#3DD6C4] transition-colors"
+                  className="text-[#C4B8D4] hover:text-[#B14EFF] transition-colors"
                 >
                   Blog
                 </button>
@@ -197,7 +197,7 @@ export function Footer({ onNavigate }: FooterProps) {
               <li>
                 <button 
                   onClick={() => onNavigate("industries")}
-                  className="text-[#C4B8D4] hover:text-[#3DD6C4] transition-colors"
+                  className="text-[#C4B8D4] hover:text-[#B14EFF] transition-colors"
                 >
                   Industries
                 </button>
@@ -205,7 +205,7 @@ export function Footer({ onNavigate }: FooterProps) {
               <li>
                 <button 
                   onClick={() => onNavigate("services")}
-                  className="text-[#C4B8D4] hover:text-[#3DD6C4] transition-colors"
+                  className="text-[#C4B8D4] hover:text-[#B14EFF] transition-colors"
                 >
                   All Services
                 </button>
@@ -213,7 +213,7 @@ export function Footer({ onNavigate }: FooterProps) {
               <li>
                 <button 
                   onClick={() => onNavigate("contact")}
-                  className="text-[#C4B8D4] hover:text-[#3DD6C4] transition-colors"
+                  className="text-[#C4B8D4] hover:text-[#B14EFF] transition-colors"
                 >
                   Get a Quote
                 </button>
@@ -226,8 +226,8 @@ export function Footer({ onNavigate }: FooterProps) {
         <div className="pt-8 border-t border-[#2A1B3D] flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-[#C4B8D4]">
           <p>© 2025 SageStone Inc. All rights reserved.</p>
           <div className="flex gap-6">
-            <button onClick={() => onNavigate("privacy")} className="hover:text-[#3DD6C4] transition-colors">Privacy Policy</button>
-            <button onClick={() => onNavigate("terms")} className="hover:text-[#3DD6C4] transition-colors">Terms of Service</button>
+            <button onClick={() => onNavigate("privacy")} className="hover:text-[#B14EFF] transition-colors">Privacy Policy</button>
+            <button onClick={() => onNavigate("terms")} className="hover:text-[#B14EFF] transition-colors">Terms of Service</button>
           </div>
         </div>
       </div>
