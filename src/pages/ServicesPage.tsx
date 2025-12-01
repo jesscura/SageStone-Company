@@ -191,7 +191,7 @@ export function ServicesPage({ onNavigate }: ServicesPageProps) {
       <section className="relative overflow-hidden bg-gradient-to-br from-[#0A0118] via-[#1A0B2E] to-[#0A0118] py-20 lg:py-28">
         {/* Animated gradient orbs */}
         <div className="absolute top-20 left-1/4 w-96 h-96 bg-[#B14EFF]/20 rounded-full blur-3xl animate-pulse" aria-hidden="true" />
-        <div className="absolute bottom-20 right-1/4 w-80 h-80 bg-[#00FF88]/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} aria-hidden="true" />
+        <div className="absolute bottom-20 right-1/4 w-80 h-80 bg-[#3DD6C4]/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} aria-hidden="true" />
         
         <div className="relative max-w-7xl mx-auto px-6">
           <div className="max-w-3xl mx-auto text-center">
@@ -199,7 +199,7 @@ export function ServicesPage({ onNavigate }: ServicesPageProps) {
               Outsourced Operations & Customer Support Services
             </Badge>
             <h1 className="text-white mb-6">
-              Services designed for <span className="text-[#00FF88]">founders who want to focus on growth</span>
+              Services designed for <span className="text-[#3DD6C4]">founders who want to focus on growth</span>
             </h1>
             <p className="text-xl text-[#C4B8D4] leading-relaxed">
               Our services are designed for founders who want to focus on growth while we handle 
@@ -221,7 +221,7 @@ export function ServicesPage({ onNavigate }: ServicesPageProps) {
             >
               <div className={index % 2 === 1 ? 'lg:order-2' : ''}>
                 <div className="flex items-center gap-3 mb-6">
-                  <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-[#B14EFF]/20 to-[#00FF88]/10 flex items-center justify-center">
+                  <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-[#B14EFF]/20 to-[#3DD6C4]/10 flex items-center justify-center">
                     <service.icon className="w-7 h-7 text-[#B14EFF]" />
                   </div>
                   <div>
@@ -229,7 +229,7 @@ export function ServicesPage({ onNavigate }: ServicesPageProps) {
                   </div>
                 </div>
                 
-                <p className="text-lg text-[#00FF88] mb-4">
+                <p className="text-lg text-[#3DD6C4] mb-4">
                   {service.tagline}
                 </p>
 
@@ -251,7 +251,7 @@ export function ServicesPage({ onNavigate }: ServicesPageProps) {
                 <div className="grid grid-cols-3 gap-4 mb-8">
                   {service.metrics.map((metric, i) => (
                     <div key={i} className="text-center p-4 rounded-xl bg-[#1A0B2E]/50 border border-[#2A1B3D]">
-                      <div className="text-2xl text-[#00FF88] font-bold mb-1">{metric.value}</div>
+                      <div className="text-2xl text-[#3DD6C4] font-bold mb-1">{metric.value}</div>
                       <div className="text-xs text-[#C4B8D4]">{metric.label}</div>
                     </div>
                   ))}
@@ -259,7 +259,7 @@ export function ServicesPage({ onNavigate }: ServicesPageProps) {
 
                 <Button 
                   onClick={() => onNavigate("contact")}
-                  className="bg-[#00FF88] hover:bg-[#00DD77] text-[#0A0118] font-semibold transition-all hover:scale-105 min-w-[44px] min-h-[44px]"
+                  className="bg-[#3DD6C4] hover:bg-[#35C0B0] text-[#0A0118] font-semibold transition-all hover:scale-105 min-w-[44px] min-h-[44px]"
                   aria-label="Get a tailored plan"
                 >
                   Get a Tailored Plan
@@ -287,7 +287,7 @@ export function ServicesPage({ onNavigate }: ServicesPageProps) {
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <h2 className="text-white mb-4">
-              Why choose <span className="text-[#00FF88]">SageStone Inc</span>
+              Why choose <span className="text-[#3DD6C4]">SageStone Inc</span>
             </h2>
             <p className="text-xl text-[#C4B8D4]">
               More than just outsourcing — a partnership built for your success
@@ -313,7 +313,7 @@ export function ServicesPage({ onNavigate }: ServicesPageProps) {
               }
             ].map((feature, index) => (
               <Card key={index} className="p-8 bg-[#1A0B2E]/50 border-[#2A1B3D] hover:border-[#B14EFF]/50 transition-colors">
-                <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-[#B14EFF]/20 to-[#00FF88]/10 flex items-center justify-center mb-6">
+                <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-[#B14EFF]/20 to-[#3DD6C4]/10 flex items-center justify-center mb-6">
                   <feature.icon className="w-7 h-7 text-[#B14EFF]" />
                 </div>
                 <h4 className="text-white mb-3">{feature.title}</h4>
@@ -337,7 +337,7 @@ export function ServicesPage({ onNavigate }: ServicesPageProps) {
           <Button 
             size="lg"
             onClick={() => onNavigate("contact")}
-            className="bg-[#00FF88] hover:bg-[#00DD77] text-[#0A0118] font-semibold transition-all hover:scale-105"
+            className="bg-[#3DD6C4] hover:bg-[#35C0B0] text-[#0A0118] font-semibold transition-all hover:scale-105"
           >
             Let's build your remote operations team
             <ArrowRight className="w-4 h-4 ml-2" />

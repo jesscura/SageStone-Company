@@ -103,7 +103,7 @@ export function HomePageHero({ onPrimaryClick, onSecondaryClick }: HomePageHeroP
       value: "−64%",
       status: "Under control",
       icon: TrendingDown,
-      color: "#00FF88"
+      color: "#3DD6C4"
     },
     {
       label: "Coverage",
@@ -125,7 +125,7 @@ export function HomePageHero({ onPrimaryClick, onSecondaryClick }: HomePageHeroP
     <section className="relative overflow-hidden bg-gradient-to-br from-[#0A0118] via-[#1A0B2E] to-[#0A0118]">
       {/* Animated gradient orbs */}
       <div className="absolute top-20 left-1/4 w-96 h-96 bg-[#B14EFF]/20 rounded-full blur-3xl animate-pulse" aria-hidden="true" />
-      <div className="absolute bottom-20 right-1/4 w-80 h-80 bg-[#00FF88]/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} aria-hidden="true" />
+      <div className="absolute bottom-20 right-1/4 w-80 h-80 bg-[#3DD6C4]/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} aria-hidden="true" />
       
       <div className="relative max-w-7xl mx-auto px-6 py-24 lg:py-32">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
@@ -157,7 +157,7 @@ export function HomePageHero({ onPrimaryClick, onSecondaryClick }: HomePageHeroP
               <Button 
                 size="lg" 
                 onClick={handlePrimaryClick}
-                className="bg-[#00FF88] hover:bg-[#00DD77] text-[#0A0118] font-semibold transition-all hover:scale-105 min-w-[44px] min-h-[44px]"
+                className="bg-[#3DD6C4] hover:bg-[#35C0B0] text-[#0A0118] font-semibold transition-all hover:scale-105 min-w-[44px] min-h-[44px]"
                 aria-label="Book a strategy call"
               >
                 Book a strategy call
@@ -212,7 +212,7 @@ export function HomePageHero({ onPrimaryClick, onSecondaryClick }: HomePageHeroP
                         <div className="flex-1 min-w-0">
                           <p className="text-xs text-[#C4B8D4]/70 mb-0.5">{metric.label}</p>
                           <p className="text-lg font-bold text-white truncate">{metric.value}</p>
-                          <p className="text-xs text-[#00FF88]">{metric.status}</p>
+                          <p className="text-xs text-[#3DD6C4]">{metric.status}</p>
                         </div>
                       </div>
                     </Card>
@@ -226,7 +226,7 @@ export function HomePageHero({ onPrimaryClick, onSecondaryClick }: HomePageHeroP
               </p>
 
               {/* Glow effect */}
-              <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-gradient-to-br from-[#B14EFF] to-[#00FF88] rounded-full blur-3xl opacity-20" aria-hidden="true" />
+              <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-gradient-to-br from-[#B14EFF] to-[#3DD6C4] rounded-full blur-3xl opacity-20" aria-hidden="true" />
             </motion.div>
           </motion.div>
         </div>
