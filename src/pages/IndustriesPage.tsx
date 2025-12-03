@@ -146,7 +146,7 @@ export function IndustriesPage({ onNavigate }: IndustriesPageProps) {
                     <div className="absolute inset-0 bg-gradient-to-t from-primary/40 to-transparent" />
                     <div className="absolute bottom-4 left-4">
                       <div className="w-12 h-12 rounded-xl bg-white/90 backdrop-blur flex items-center justify-center">
-                        <industry.icon className="w-6 h-6 text-white" aria-hidden="true" />
+                        <industry.icon className="w-6 h-6 text-[var(--color-primary-400)]" aria-hidden="true" />
                       </div>
                     </div>
                   </div>

@@ -42,7 +42,6 @@ export function SEO({
     };
 
     // Basic meta tags
-    updateMetaTag('title', title);
     updateMetaTag('description', description);
     if (keywords) {
       updateMetaTag('keywords', keywords);
