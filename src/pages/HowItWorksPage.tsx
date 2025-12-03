@@ -99,24 +99,24 @@ export function HowItWorksPage({ onNavigate }: HowItWorksPageProps) {
   ];
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-[var(--dark-bg)]">
       {/* Hero Section */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-[var(--color-primary-100)] via-white to-muted py-20 lg:py-28">
+      <section className="relative overflow-hidden bg-gradient-to-br from-[var(--dark-bg)] via-[var(--dark-bg-secondary)] to-[var(--dark-bg)] py-20 lg:py-28">
         <div className="max-w-7xl mx-auto px-6">
           <div className="max-w-3xl mx-auto text-center">
-            <Badge className="mb-6 bg-white/90 text-primary border-[var(--color-primary-400)]/30">
+            <Badge className="mb-6 bg-[var(--color-primary-400)]/10 text-[var(--color-primary-400)] border-[var(--color-primary-400)]/30">
               BPO Onboarding Process & Team Setup
             </Badge>
-            <h1 className="text-foreground mb-6">
-              Built for <span className="gradient-text">clarity and speed</span>
+            <h1 className="text-white mb-6">
+              Built for <span className="text-[var(--color-primary-400)]">clarity and speed</span>
             </h1>
-            <p className="text-xl text-muted-foreground leading-relaxed mb-8">
+            <p className="text-xl text-[var(--dark-text-muted)] leading-relaxed mb-8">
               We've refined our process over hundreds of successful team builds. 
               Here's exactly how we'll get you from first call to fully operational.
             </p>
             <Button 
               onClick={() => onNavigate("contact")}
-              className="gradient-bg text-white glow-button transition-lift hover-lift"
+              className="bg-[var(--color-primary-400)] hover:bg-primary text-white transition-all hover:scale-105"
             >
               Let's Connect
               <ArrowRight className="w-4 h-4 ml-2" />
@@ -139,23 +139,23 @@ export function HowItWorksPage({ onNavigate }: HowItWorksPageProps) {
                   <div className="w-32 h-32 rounded-3xl gradient-bg flex items-center justify-center mb-4 shadow-lg">
                     <step.icon className="w-14 h-14 text-white" />
                   </div>
-                  <Badge className="bg-[var(--color-primary-100)] text-primary border-[var(--color-primary-400)]/20">
+                  <Badge className="bg-[var(--color-primary-400)]/10 text-[var(--color-primary-400)] border-[var(--color-primary-400)]/20">
                     {step.timeline}
                   </Badge>
                 </div>
 
-                <Card className="p-8 border-border hover:shadow-xl transition-shadow">
-                  <div className="text-6xl gradient-text opacity-20 mb-4">{step.number}</div>
-                  <h3 className="text-foreground mb-2">{step.title}</h3>
-                  <p className="text-primary mb-4">{step.subtitle}</p>
-                  <p className="text-muted-foreground mb-6 leading-relaxed">
+                <Card className="p-8 bg-[var(--dark-bg-secondary)]/60 backdrop-blur-sm border-[var(--dark-surface)] hover:border-[var(--color-primary-400)]/50 transition-all duration-300">
+                  <div className="text-6xl text-[var(--color-primary-400)]/20 mb-4">{step.number}</div>
+                  <h3 className="text-white mb-2">{step.title}</h3>
+                  <p className="text-[var(--color-primary-400)] mb-4">{step.subtitle}</p>
+                  <p className="text-[var(--dark-text-muted)] mb-6 leading-relaxed">
                     {step.description}
                   </p>
                   <div className="space-y-3">
                     {step.details.map((detail, i) => (
                       <div key={i} className="flex items-start gap-3">
-                        <CheckCircle2 className="w-5 h-5 text-primary shrink-0 mt-0.5" />
-                        <span className="text-foreground">{detail}</span>
+                        <CheckCircle2 className="w-5 h-5 text-[var(--color-primary-400)] shrink-0 mt-0.5" />
+                        <span className="text-white">{detail}</span>
                       </div>
                     ))}
                   </div>
@@ -167,12 +167,12 @@ export function HowItWorksPage({ onNavigate }: HowItWorksPageProps) {
       </section>
 
       {/* CTA After Process */}
-      <section className="py-12 bg-white">
+      <section className="py-12 bg-[var(--dark-bg)]">
         <div className="max-w-4xl mx-auto px-6 text-center">
           <Button 
             size="lg"
             onClick={() => onNavigate("contact")}
-            className="gradient-bg text-white glow-button transition-lift hover-lift min-w-[44px] min-h-[44px]"
+            className="bg-[var(--color-primary-400)] hover:bg-primary text-white transition-all hover:scale-105 min-w-[44px] min-h-[44px]"
             aria-label="Start building your team"
           >
             Start Your Build
@@ -182,25 +182,25 @@ export function HowItWorksPage({ onNavigate }: HowItWorksPageProps) {
       </section>
 
       {/* What You Get */}
-      <section className="py-20 lg:py-28 bg-muted">
+      <section className="py-20 lg:py-28 bg-[var(--dark-bg-secondary)]">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="text-foreground mb-4">
-              What makes SageStone Inc <span className="gradient-text">different</span>
+            <h2 className="text-white mb-4">
+              What makes SageStone Inc <span className="text-[var(--color-primary-400)]">different</span>
             </h2>
-            <p className="text-xl text-muted-foreground">
+            <p className="text-xl text-[var(--dark-text-muted)]">
               We build teams that help businesses run smarter, not harder.
             </p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
             {features.map((feature, index) => (
-              <Card key={index} className="p-8 text-center border-border hover:border-[var(--color-primary-400)]/30 transition-colors">
-                <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-[var(--color-primary-400)]/10 to-accent/10 flex items-center justify-center mx-auto mb-6">
-                  <feature.icon className="w-8 h-8 text-primary" />
+              <Card key={index} className="p-8 text-center bg-[var(--dark-bg-secondary)]/50 backdrop-blur-sm border-[var(--dark-surface)] hover:border-[var(--color-primary-400)]/50 transition-colors">
+                <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-[var(--color-primary-400)]/20 to-accent/10 flex items-center justify-center mx-auto mb-6">
+                  <feature.icon className="w-8 h-8 text-[var(--color-primary-400)]" />
                 </div>
-                <h4 className="text-foreground mb-3">{feature.title}</h4>
-                <p className="text-muted-foreground">{feature.description}</p>
+                <h4 className="text-white mb-3">{feature.title}</h4>
+                <p className="text-[var(--dark-text-muted)]">{feature.description}</p>
               </Card>
             ))}
           </div>
@@ -208,18 +208,18 @@ export function HowItWorksPage({ onNavigate }: HowItWorksPageProps) {
       </section>
 
       {/* Testimonial */}
-      <section className="py-12 bg-white">
+      <section className="py-12 bg-[var(--dark-bg)]">
         <div className="max-w-4xl mx-auto px-6">
-          <Card className="p-8 gradient-border text-center">
+          <Card className="p-8 bg-[var(--dark-bg-secondary)]/60 backdrop-blur-sm border-[var(--color-primary-400)]/50 text-center">
             <div className="flex gap-1 justify-center mb-4" role="img" aria-label="5 star rating">
               {[...Array(5)].map((_, i) => (
                 <Star key={i} className="w-5 h-5 fill-accent text-accent" aria-hidden="true" />
               ))}
             </div>
-            <blockquote className="text-xl text-foreground mb-4 leading-relaxed">
+            <blockquote className="text-xl text-white mb-4 leading-relaxed">
               "From first call to fully operational in 2 weeks. The team at SageStone has been exceptional. Real accountability."
             </blockquote>
-            <cite className="text-muted-foreground not-italic">
+            <cite className="text-[var(--dark-text-muted)] not-italic">
               — Priya Sharma, COO at CloudSync
             </cite>
           </Card>
@@ -227,8 +227,8 @@ export function HowItWorksPage({ onNavigate }: HowItWorksPageProps) {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 lg:py-24 gradient-bg relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent" />
+      <section className="py-20 lg:py-24 bg-gradient-to-r from-[var(--color-primary-400)] via-primary to-[var(--color-primary-400)] relative overflow-hidden">
+        <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%23ffffff\' fill-opacity=\'0.05\'%3E%3Ccircle cx=\'30\' cy=\'30\' r=\'2\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')]" aria-hidden="true" />
         <div className="relative max-w-7xl mx-auto px-6">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             {/* Left Content */}
@@ -243,11 +243,11 @@ export function HowItWorksPage({ onNavigate }: HowItWorksPageProps) {
                 <Button 
                   size="lg"
                   onClick={() => onNavigate("contact")}
-                  className="bg-white !text-primary hover:bg-white/90 transition-lift hover-lift min-w-[44px] min-h-[44px]"
+                  className="bg-white hover:bg-white/90 text-[var(--color-primary-400)] transition-all hover:scale-105 min-w-[44px] min-h-[44px]"
                   aria-label="Book a free consult"
                 >
-                  <span className="text-primary">Book a free consult</span>
-                  <ArrowRight className="w-4 h-4 ml-2 text-primary" aria-hidden="true" />
+                  <span className="text-[var(--color-primary-400)]">Book a free consult</span>
+                  <ArrowRight className="w-4 h-4 ml-2 text-[var(--color-primary-400)]" aria-hidden="true" />
                 </Button>
                 <Button 
                   size="lg"
@@ -274,11 +274,11 @@ export function HowItWorksPage({ onNavigate }: HowItWorksPageProps) {
       </section>
 
       {/* SEO Footer */}
-      <section className="py-12 bg-white border-t border-border">
+      <section className="py-12 bg-[var(--dark-bg)] border-t border-[var(--dark-surface)]">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center">
-            <p className="text-sm text-muted-foreground">
-              <strong>SageStone Inc BPO Onboarding Process:</strong> Fast 2-week team setup with discovery, recruitment of trained support specialists, 
+            <p className="text-sm text-[var(--dark-text-muted)]">
+              <strong className="text-white">SageStone Inc BPO Onboarding Process:</strong> Fast 2-week team setup with discovery, recruitment of trained support specialists, 
               comprehensive onboarding with tool integration and workflow training, plus ongoing optimization and performance reviews for continuous improvement.
             </p>
           </div>

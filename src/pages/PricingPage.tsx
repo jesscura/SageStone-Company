@@ -67,18 +67,18 @@ export function PricingPage({ onNavigate }: PricingPageProps) {
   ];
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-[var(--dark-bg)]">
       {/* Hero Section */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-[var(--color-primary-100)] via-white to-muted py-20 lg:py-28">
+      <section className="relative overflow-hidden bg-gradient-to-br from-[var(--dark-bg)] via-[var(--dark-bg-secondary)] to-[var(--dark-bg)] py-20 lg:py-28">
         <div className="max-w-7xl mx-auto px-6">
           <div className="max-w-3xl mx-auto text-center">
-            <Badge className="mb-6 bg-white/90 text-primary border-[var(--color-primary-400)]/30">
+            <Badge className="mb-6 bg-[var(--color-primary-400)]/10 text-[var(--color-primary-400)] border-[var(--color-primary-400)]/30">
               Transparent BPO Pricing for Startups & Growing Companies
             </Badge>
-            <h1 className="text-foreground mb-6">
-              <span className="gradient-text">Transparent pricing.</span> Flexible plans.
+            <h1 className="text-white mb-6">
+              <span className="text-[var(--color-primary-400)]">Transparent pricing.</span> Flexible plans.
             </h1>
-            <p className="text-xl text-muted-foreground leading-relaxed">
+            <p className="text-xl text-[var(--dark-text-muted)] leading-relaxed">
               No hidden fees. No surprises. Each plan includes manager oversight, onboarding, 
               and performance analytics. You pay for results, not just hours.
             </p>
@@ -93,10 +93,10 @@ export function PricingPage({ onNavigate }: PricingPageProps) {
             {plans.map((plan, index) => (
               <Card 
                 key={index}
-                className={`p-8 relative ${
+                className={`p-8 relative bg-[var(--dark-bg-secondary)]/60 backdrop-blur-sm ${
                   plan.highlighted 
-                    ? 'border-2 gradient-border shadow-2xl' 
-                    : 'border-border'
+                    ? 'border-2 border-[var(--color-primary-400)] shadow-2xl' 
+                    : 'border-[var(--dark-surface)]'
                 }`}
               >
                 {plan.highlighted && (
@@ -108,30 +108,30 @@ export function PricingPage({ onNavigate }: PricingPageProps) {
                   </div>
                 )}
 
-                <h3 className="text-foreground mb-2">{plan.name}</h3>
-                <p className="text-sm text-muted-foreground mb-2">{plan.description}</p>
-                <p className="text-xs text-primary mb-6">Ideal for: {plan.idealFor}</p>
+                <h3 className="text-white mb-2">{plan.name}</h3>
+                <p className="text-sm text-[var(--dark-text-muted)] mb-2">{plan.description}</p>
+                <p className="text-xs text-[var(--color-primary-400)] mb-6">Ideal for: {plan.idealFor}</p>
 
                 <div className="mb-6">
                   <div className="flex items-baseline gap-2">
                     {plan.price === "Custom" ? (
-                      <div className="text-4xl gradient-text">Custom</div>
+                      <div className="text-4xl text-[var(--color-primary-400)]">Custom</div>
                     ) : (
                       <>
-                        <span className="text-sm text-muted-foreground">$</span>
-                        <span className="text-5xl gradient-text">{plan.price}</span>
+                        <span className="text-sm text-[var(--dark-text-muted)]">$</span>
+                        <span className="text-5xl text-[var(--color-primary-400)]">{plan.price}</span>
                       </>
                     )}
                   </div>
-                  <p className="text-sm text-muted-foreground mt-1">{plan.period}</p>
+                  <p className="text-sm text-[var(--dark-text-muted)] mt-1">{plan.period}</p>
                 </div>
 
                 <Button 
                   onClick={() => onNavigate("contact")}
                   className={`w-full mb-8 min-w-[44px] min-h-[44px] ${
                     plan.highlighted
-                      ? 'gradient-bg text-white glow-button'
-                      : 'border-[var(--color-primary-400)] text-primary hover:bg-[var(--color-primary-100)]'
+                      ? 'bg-[var(--color-primary-400)] hover:bg-primary text-white'
+                      : 'border-[var(--color-primary-400)] text-[var(--color-primary-400)] hover:bg-[var(--color-primary-400)]/10'
                   }`}
                   variant={plan.highlighted ? "default" : "outline"}
                   aria-label={plan.cta}
@@ -143,8 +143,8 @@ export function PricingPage({ onNavigate }: PricingPageProps) {
                 <div className="space-y-3">
                   {plan.features.map((feature, i) => (
                     <div key={i} className="flex items-start gap-3">
-                      <CheckCircle2 className="w-5 h-5 text-primary shrink-0 mt-0.5" />
-                      <span className="text-sm text-foreground">{feature}</span>
+                      <CheckCircle2 className="w-5 h-5 text-[var(--color-primary-400)] shrink-0 mt-0.5" />
+                      <span className="text-sm text-white">{feature}</span>
                     </div>
                   ))}
                 </div>
@@ -153,13 +153,13 @@ export function PricingPage({ onNavigate }: PricingPageProps) {
           </div>
 
           <div className="text-center">
-            <p className="text-muted-foreground mb-4">
+            <p className="text-[var(--dark-text-muted)] mb-4">
               Not sure which plan is right for you?
             </p>
             <Button 
               onClick={() => onNavigate("contact")}
               variant="outline"
-              className="border-[var(--color-primary-400)] text-primary hover:bg-[var(--color-primary-100)] min-w-[44px] min-h-[44px]"
+              className="border-[var(--color-primary-400)] text-[var(--color-primary-400)] hover:bg-[var(--color-primary-400)]/10 min-w-[44px] min-h-[44px]"
               aria-label="Get your custom quote"
             >
               Get your custom quote
@@ -169,13 +169,13 @@ export function PricingPage({ onNavigate }: PricingPageProps) {
       </section>
 
       {/* What's Included */}
-      <section className="py-20 lg:py-28 bg-muted">
+      <section className="py-20 lg:py-28 bg-[var(--dark-bg-secondary)]">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-12">
-            <h2 className="text-foreground mb-4">
-              What's <span className="gradient-text">included</span>
+            <h2 className="text-white mb-4">
+              What's <span className="text-[var(--color-primary-400)]">included</span>
             </h2>
-            <p className="text-xl text-muted-foreground">
+            <p className="text-xl text-[var(--dark-text-muted)]">
               Every plan comes with the essentials for success
             </p>
           </div>
@@ -193,8 +193,8 @@ export function PricingPage({ onNavigate }: PricingPageProps) {
               "No setup fees or hidden costs"
             ].map((item, index) => (
               <div key={index} className="flex items-start gap-3">
-                <CheckCircle2 className="w-5 h-5 text-primary shrink-0 mt-0.5" />
-                <span className="text-foreground">{item}</span>
+                <CheckCircle2 className="w-5 h-5 text-[var(--color-primary-400)] shrink-0 mt-0.5" />
+                <span className="text-white">{item}</span>
               </div>
             ))}
           </div>
@@ -202,11 +202,11 @@ export function PricingPage({ onNavigate }: PricingPageProps) {
       </section>
 
       {/* FAQ */}
-      <section className="py-20 lg:py-28">
+      <section className="py-20 lg:py-28 bg-[var(--dark-bg)]">
         <div className="max-w-4xl mx-auto px-6">
           <div className="text-center mb-12">
-            <h2 className="text-foreground mb-4">
-              Pricing <span className="gradient-text">FAQs</span>
+            <h2 className="text-white mb-4">
+              Pricing <span className="text-[var(--color-primary-400)]">FAQs</span>
             </h2>
           </div>
 
@@ -233,9 +233,9 @@ export function PricingPage({ onNavigate }: PricingPageProps) {
                 a: "Absolutely. We specialize in eCommerce support, including Shopify product management, fulfillment coordination, and customer service."
               }
             ].map((faq, index) => (
-              <Card key={index} className="p-6 border-border hover:border-[var(--color-primary-400)]/30 transition-colors">
-                <h4 className="text-foreground mb-2">{faq.q}</h4>
-                <p className="text-muted-foreground">{faq.a}</p>
+              <Card key={index} className="p-6 bg-[var(--dark-bg-secondary)]/60 backdrop-blur-sm border-[var(--dark-surface)] hover:border-[var(--color-primary-400)]/50 transition-colors">
+                <h4 className="text-white mb-2">{faq.q}</h4>
+                <p className="text-[var(--dark-text-muted)]">{faq.a}</p>
               </Card>
             ))}
           </div>
@@ -243,8 +243,8 @@ export function PricingPage({ onNavigate }: PricingPageProps) {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 lg:py-24 gradient-bg relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent" />
+      <section className="py-20 lg:py-24 bg-gradient-to-r from-[var(--color-primary-400)] via-primary to-[var(--color-primary-400)] relative overflow-hidden">
+        <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%23ffffff\' fill-opacity=\'0.05\'%3E%3Ccircle cx=\'30\' cy=\'30\' r=\'2\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')]" aria-hidden="true" />
         <div className="relative max-w-4xl mx-auto px-6 text-center">
           <h2 className="text-white mb-6">
             Ready to build your team?
@@ -255,21 +255,21 @@ export function PricingPage({ onNavigate }: PricingPageProps) {
           <Button 
             size="lg"
             onClick={() => onNavigate("contact")}
-            className="bg-white !text-primary hover:bg-white/90 transition-lift hover-lift min-w-[44px] min-h-[44px]"
+            className="bg-white hover:bg-white/90 text-[var(--color-primary-400)] transition-all hover:scale-105 min-w-[44px] min-h-[44px]"
             aria-label="Get your custom quote"
           >
-            <span className="text-primary">Get your custom quote</span>
-            <ArrowRight className="w-4 h-4 ml-2 text-primary" aria-hidden="true" />
+            <span className="text-[var(--color-primary-400)]">Get your custom quote</span>
+            <ArrowRight className="w-4 h-4 ml-2 text-[var(--color-primary-400)]" aria-hidden="true" />
           </Button>
         </div>
       </section>
 
       {/* SEO Footer */}
-      <section className="py-12 bg-white border-t border-border">
+      <section className="py-12 bg-[var(--dark-bg)] border-t border-[var(--dark-surface)]">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center">
-            <p className="text-sm text-muted-foreground">
-              <strong>Transparent BPO Pricing:</strong> Flexible plans for solopreneurs, startups, and growing companies. 
+            <p className="text-sm text-[var(--dark-text-muted)]">
+              <strong className="text-white">Transparent BPO Pricing:</strong> Flexible plans for solopreneurs, startups, and growing companies. 
               Virtual assistant services starting at $1,200/month, dedicated teams from $2,500/seat, and custom enterprise solutions. 
               All plans include manager oversight, onboarding, and performance analytics with no hidden fees.
             </p>
