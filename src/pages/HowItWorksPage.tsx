@@ -136,7 +136,7 @@ export function HowItWorksPage({ onNavigate }: HowItWorksPageProps) {
               
               <div className="grid lg:grid-cols-[auto,1fr] gap-8">
                 <div className="flex flex-col items-center lg:items-start">
-                  <div className="w-32 h-32 rounded-3xl gradient-bg flex items-center justify-center mb-4 shadow-lg">
+                  <div className="w-32 h-32 rounded-3xl bg-gradient-to-br from-[var(--color-primary-400)] to-primary flex items-center justify-center mb-4 shadow-lg">
                     <step.icon className="w-14 h-14 text-white" />
                   </div>
                   <Badge className="bg-[var(--color-primary-400)]/10 text-[var(--color-primary-400)] border-[var(--color-primary-400)]/20">
