@@ -1,4 +1,5 @@
 import { Button } from "../components/ui/button";
+import { SEO } from "../components/SEO";
 import { Badge } from "../components/ui/badge";
 import { Card } from "../components/ui/card";
 import { ImageWithFallback } from "../components/figma/ImageWithFallback";
@@ -58,18 +59,27 @@ export function CaseStudiesPage({ onNavigate }: CaseStudiesPageProps) {
   ];
 
   return (
-    <div className="min-h-screen bg-white">
-      {/* Hero Section */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-[var(--color-primary-100)] via-white to-muted py-20 lg:py-28">
+    <>
+      <SEO
+        title="Case Studies | Real Results from Our BPO Clients | SageStone Inc"
+        description="See how SageStone Inc helps businesses scale with BPO services. Real case studies showing 42% faster response times, 35% cost savings, and 94% customer satisfaction."
+        keywords="BPO case studies, outsourcing success stories, virtual assistant results, customer support ROI, eCommerce BPO results"
+        canonical="https://www.sagestoneinc.com/casestudies"
+        ogTitle="Case Studies | Proven BPO Results & Client Success Stories"
+        ogDescription="Real results: 42% faster response times, 35% cost savings, 94% satisfaction. See how our BPO services transform businesses."
+      />
+      <div className="min-h-screen bg-[var(--dark-bg)]">
+        {/* Hero Section */}
+        <section className="relative overflow-hidden bg-gradient-to-br from-[var(--dark-bg)] via-[var(--dark-bg-secondary)] to-[var(--dark-bg)] py-20 lg:py-28">
         <div className="max-w-7xl mx-auto px-6">
           <div className="max-w-3xl mx-auto text-center">
-            <Badge className="mb-6 bg-white/90 text-primary border-[var(--color-primary-400)]/30">
+            <Badge className="mb-6 bg-[var(--color-primary-400)]/10 text-[var(--color-primary-400)] border-[var(--color-primary-400)]/30">
               BPO Results & Client Success Stories
             </Badge>
-            <h1 className="text-foreground mb-6">
+            <h1 className="text-white mb-6">
               Real teams. <span className="gradient-text">Real results.</span>
             </h1>
-            <p className="text-xl text-muted-foreground leading-relaxed">
+            <p className="text-xl text-[var(--dark-text-muted)] leading-relaxed">
               See how Shopify merchants, property managers, and growing companies are scaling smarter with SageStone Inc.
             </p>
           </div>
@@ -105,20 +115,20 @@ export function CaseStudiesPage({ onNavigate }: CaseStudiesPageProps) {
                 <div className="p-8 lg:p-12">
                   <div className="mb-8">
                     <h4 className="text-primary mb-3">The Challenge</h4>
-                    <p className="text-muted-foreground leading-relaxed">
+                    <p className="text-[var(--dark-text-muted)] leading-relaxed">
                       {study.challenge}
                     </p>
                   </div>
 
                   <div className="mb-8">
                     <h4 className="text-primary mb-3">SageStone Inc Solution</h4>
-                    <p className="text-muted-foreground leading-relaxed">
+                    <p className="text-[var(--dark-text-muted)] leading-relaxed">
                       {study.solution}
                     </p>
                   </div>
 
                   <div className="mb-8">
-                    <h4 className="text-foreground mb-4">The Results</h4>
+                    <h4 className="text-white mb-4">The Results</h4>
                     <div className="grid gap-4">
                       {study.results.map((result, i) => (
                         <div key={i} className="flex items-start gap-4 p-4 rounded-xl bg-muted border border-border">
@@ -127,10 +137,10 @@ export function CaseStudiesPage({ onNavigate }: CaseStudiesPageProps) {
                           </div>
                           <div className="flex-1">
                             <div className="flex items-baseline gap-2 mb-1">
-                              <span className="text-sm text-muted-foreground">{result.metric}:</span>
+                              <span className="text-sm text-[var(--dark-text-muted)]">{result.metric}:</span>
                               <span className="text-2xl gradient-text">{result.value}</span>
                             </div>
-                            <p className="text-xs text-muted-foreground">{result.description}</p>
+                            <p className="text-xs text-[var(--dark-text-muted)]">{result.description}</p>
                           </div>
                         </div>
                       ))}
@@ -138,8 +148,8 @@ export function CaseStudiesPage({ onNavigate }: CaseStudiesPageProps) {
                   </div>
 
                   <blockquote className="border-l-4 border-[var(--color-primary-400)] pl-6 mb-4">
-                    <p className="text-foreground italic leading-relaxed mb-2">"{study.quote}"</p>
-                    <cite className="text-sm text-muted-foreground not-italic">— {study.author}</cite>
+                    <p className="text-white italic leading-relaxed mb-2">"{study.quote}"</p>
+                    <cite className="text-sm text-[var(--dark-text-muted)] not-italic">— {study.author}</cite>
                   </blockquote>
                 </div>
               </div>
@@ -161,20 +171,20 @@ export function CaseStudiesPage({ onNavigate }: CaseStudiesPageProps) {
           <Button 
             size="lg"
             onClick={() => onNavigate("contact")}
-            className="bg-white !text-primary hover:bg-white/90 transition-lift hover-lift min-w-[44px] min-h-[44px]"
+            className="bg-[var(--color-primary-400)] !text-white hover:bg-primary/90 transition-lift hover-lift min-w-[44px] min-h-[44px]"
             aria-label="Start building your team"
           >
-            <span className="text-primary">Start your build</span>
-            <ArrowRight className="w-4 h-4 ml-2 text-primary" aria-hidden="true" />
+            <span className="text-white">Start your build</span>
+            <ArrowRight className="w-4 h-4 ml-2 text-white" aria-hidden="true" />
           </Button>
         </div>
       </section>
 
       {/* SEO Footer */}
-      <section className="py-12 bg-white border-t border-border">
+      <section className="py-12 bg-[var(--dark-bg)] border-t border-[var(--dark-surface)]">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center">
-            <p className="text-sm text-muted-foreground">
+            <p className="text-sm text-[var(--dark-text-muted)]">
               <strong>SageStone Inc BPO Case Studies:</strong> Real results from eCommerce customer service, Shopify support specialists, 
               property operations management, and customer success outsourcing. See how our clients achieved 42% faster response times, 
               35% cost savings, and 2-week team launches.
@@ -183,5 +193,6 @@ export function CaseStudiesPage({ onNavigate }: CaseStudiesPageProps) {
         </div>
       </section>
     </div>
+    </>
   );
 }

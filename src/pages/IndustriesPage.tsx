@@ -1,4 +1,5 @@
 import { Button } from "../components/ui/button";
+import { SEO } from "../components/SEO";
 import { Badge } from "../components/ui/badge";
 import { Card } from "../components/ui/card";
 import { ImageWithFallback } from "../components/figma/ImageWithFallback";
@@ -101,18 +102,27 @@ export function IndustriesPage({ onNavigate }: IndustriesPageProps) {
   ];
 
   return (
-    <div className="min-h-screen bg-white">
-      {/* Hero Section */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-[var(--color-primary-100)] via-white to-muted py-20 lg:py-28">
+    <>
+      <SEO
+        title="Industries We Serve | eCommerce, SaaS, Property Management & More"
+        description="SageStone Inc provides specialized BPO services for eCommerce, Shopify stores, SaaS startups, property management, and service businesses. Scale operations with dedicated remote teams."
+        keywords="eCommerce BPO, Shopify support, SaaS customer success, property management BPO, retail support outsourcing"
+        canonical="https://www.sagestoneinc.com/industries"
+        ogTitle="Industries We Serve | Specialized BPO for eCommerce, SaaS & More"
+        ogDescription="Expert BPO services tailored for eCommerce, Shopify, SaaS, property management, and service businesses. Get industry-specific support teams."
+      />
+      <div className="min-h-screen bg-[var(--dark-bg)]">
+        {/* Hero Section */}
+        <section className="relative overflow-hidden bg-gradient-to-br from-[var(--dark-bg)] via-[var(--dark-bg-secondary)] to-[var(--dark-bg)] py-20 lg:py-28">
         <div className="max-w-7xl mx-auto px-6">
           <div className="max-w-3xl mx-auto text-center">
-            <Badge className="mb-6 bg-white/90 text-primary border-[var(--color-primary-400)]/30">
+            <Badge className="mb-6 bg-[var(--color-primary-400)]/10 text-[var(--color-primary-400)] border-[var(--color-primary-400)]/30">
               Industries We Serve
             </Badge>
-            <h1 className="text-foreground mb-6">
+            <h1 className="text-white mb-6">
               BPO solutions tailored for <span className="gradient-text">your industry</span>
             </h1>
-            <p className="text-xl text-muted-foreground leading-relaxed">
+            <p className="text-xl text-[var(--dark-text-muted)] leading-relaxed">
               We understand that every industry has unique challenges. That's why we build dedicated teams 
               with specialized expertise to help you succeed.
             </p>
@@ -136,18 +146,18 @@ export function IndustriesPage({ onNavigate }: IndustriesPageProps) {
                     <div className="absolute inset-0 bg-gradient-to-t from-primary/40 to-transparent" />
                     <div className="absolute bottom-4 left-4">
                       <div className="w-12 h-12 rounded-xl bg-white/90 backdrop-blur flex items-center justify-center">
-                        <industry.icon className="w-6 h-6 text-primary" aria-hidden="true" />
+                        <industry.icon className="w-6 h-6 text-[var(--color-primary-400)]" aria-hidden="true" />
                       </div>
                     </div>
                   </div>
                   
                   <div className="p-6 flex flex-col flex-1">
-                    <h3 className="text-xl text-foreground mb-2">{industry.title}</h3>
-                    <p className="text-muted-foreground mb-4 text-sm">{industry.description}</p>
+                    <h3 className="text-xl text-white mb-2">{industry.title}</h3>
+                    <p className="text-[var(--dark-text-muted)] mb-4 text-sm">{industry.description}</p>
                     
                     <ul className="space-y-2 mb-6 flex-1">
                       {industry.benefits.map((benefit, i) => (
-                        <li key={i} className="flex items-start gap-2 text-sm text-muted-foreground">
+                        <li key={i} className="flex items-start gap-2 text-sm text-[var(--dark-text-muted)]">
                           <CheckCircle2 className="w-4 h-4 text-primary shrink-0 mt-0.5" aria-hidden="true" />
                           {benefit}
                         </li>
@@ -156,7 +166,7 @@ export function IndustriesPage({ onNavigate }: IndustriesPageProps) {
                     
                     <div className="pt-4 border-t border-border flex items-center justify-between">
                       <div>
-                        <p className="text-xs text-muted-foreground">{industry.metrics.label}</p>
+                        <p className="text-xs text-[var(--dark-text-muted)]">{industry.metrics.label}</p>
                         <p className="text-lg gradient-text font-semibold">{industry.metrics.value}</p>
                       </div>
                       <Button
@@ -178,13 +188,13 @@ export function IndustriesPage({ onNavigate }: IndustriesPageProps) {
       </section>
 
       {/* Why Industry Expertise Matters */}
-      <section className="py-20 lg:py-28 bg-muted">
+      <section className="py-20 lg:py-28 bg-[var(--dark-bg-secondary)]">
         <div className="max-w-7xl mx-auto px-6">
           <ScrollAnimation animation="fadeInUp" className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="text-foreground mb-4">
+            <h2 className="text-white mb-4">
               Why <span className="gradient-text">industry expertise</span> matters
             </h2>
-            <p className="text-xl text-muted-foreground">
+            <p className="text-xl text-[var(--dark-text-muted)]">
               Generic outsourcing doesn't work. We invest in understanding your industry's 
               specific needs, terminology, and challenges.
             </p>
@@ -210,8 +220,8 @@ export function IndustriesPage({ onNavigate }: IndustriesPageProps) {
                   <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[var(--color-primary-400)]/10 to-accent/10 flex items-center justify-center mx-auto mb-4">
                     <span className="text-2xl gradient-text font-bold">{index + 1}</span>
                   </div>
-                  <h4 className="text-foreground mb-3">{item.title}</h4>
-                  <p className="text-muted-foreground">{item.description}</p>
+                  <h4 className="text-white mb-3">{item.title}</h4>
+                  <p className="text-[var(--dark-text-muted)]">{item.description}</p>
                 </Card>
               </ScrollAnimation>
             ))}
@@ -233,21 +243,21 @@ export function IndustriesPage({ onNavigate }: IndustriesPageProps) {
             <Button
               size="lg"
               onClick={() => onNavigate("contact")}
-              className="bg-white !text-primary hover:bg-white/90 transition-lift hover-lift min-w-[44px] min-h-[44px]"
+              className="bg-[var(--color-primary-400)] !text-white hover:bg-primary/90 transition-lift hover-lift min-w-[44px] min-h-[44px]"
               aria-label="Contact us to discuss your industry needs"
             >
-              <span className="text-primary">Let's Talk About Your Business</span>
-              <ArrowRight className="w-4 h-4 ml-2 text-primary" aria-hidden="true" />
+              <span className="text-white">Let's Talk About Your Business</span>
+              <ArrowRight className="w-4 h-4 ml-2 text-white" aria-hidden="true" />
             </Button>
           </ScrollAnimation>
         </div>
       </section>
 
       {/* SEO Footer */}
-      <section className="py-12 bg-white border-t border-border">
+      <section className="py-12 bg-[var(--dark-bg)] border-t border-[var(--dark-surface)]">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center">
-            <p className="text-sm text-muted-foreground">
+            <p className="text-sm text-[var(--dark-text-muted)]">
               <strong>SageStone Inc Industry Solutions:</strong> BPO and virtual assistant services for eCommerce, 
               Shopify merchants, property management, real estate, startups, SaaS companies, service businesses, 
               SMBs, and digital agencies. Industry-specific expertise for customer support, back-office operations, 
@@ -257,5 +267,6 @@ export function IndustriesPage({ onNavigate }: IndustriesPageProps) {
         </div>
       </section>
     </div>
+    </>
   );
 }

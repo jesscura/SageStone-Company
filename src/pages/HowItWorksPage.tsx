@@ -1,4 +1,5 @@
 import { Button } from "../components/ui/button";
+import { SEO } from "../components/SEO";
 import { Badge } from "../components/ui/badge";
 import { Card } from "../components/ui/card";
 import { ImageWithFallback } from "../components/figma/ImageWithFallback";
@@ -99,9 +100,18 @@ export function HowItWorksPage({ onNavigate }: HowItWorksPageProps) {
   ];
 
   return (
-    <div className="min-h-screen bg-[var(--dark-bg)]">
-      {/* Hero Section */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-[var(--dark-bg)] via-[var(--dark-bg-secondary)] to-[var(--dark-bg)] py-20 lg:py-28">
+    <>
+      <SEO
+        title="How It Works | Our 4-Step BPO Process | SageStone Inc"
+        description="Learn how SageStone Inc builds and manages your remote team in 4 simple steps: Discovery, Recruitment, Onboarding, and Ongoing Support. Get started in 2 weeks."
+        keywords="BPO process, remote team onboarding, virtual assistant hiring, outsourcing workflow, team management"
+        canonical="https://www.sagestoneinc.com/howitworks"
+        ogTitle="How It Works | Simple 4-Step BPO Process"
+        ogDescription="From discovery to ongoing support, we handle everything. Build your dedicated remote team in 2 weeks with our proven process."
+      />
+      <div className="min-h-screen bg-[var(--dark-bg)]">
+        {/* Hero Section */}
+        <section className="relative overflow-hidden bg-gradient-to-br from-[var(--dark-bg)] via-[var(--dark-bg-secondary)] to-[var(--dark-bg)] py-20 lg:py-28">
         <div className="max-w-7xl mx-auto px-6">
           <div className="max-w-3xl mx-auto text-center">
             <Badge className="mb-6 bg-[var(--color-primary-400)]/10 text-[var(--color-primary-400)] border-[var(--color-primary-400)]/30">
@@ -285,5 +295,6 @@ export function HowItWorksPage({ onNavigate }: HowItWorksPageProps) {
         </div>
       </section>
     </div>
+    </>
   );
 }

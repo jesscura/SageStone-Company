@@ -1,4 +1,5 @@
 import { Button } from "../components/ui/button";
+import { SEO } from "../components/SEO";
 import { Input } from "../components/ui/input";
 import { Textarea } from "../components/ui/textarea";
 import { Badge } from "../components/ui/badge";
@@ -11,9 +12,18 @@ interface ContactPageProps {
 
 export function ContactPage({ onNavigate }: ContactPageProps) {
   return (
-    <div className="min-h-screen bg-[var(--dark-bg)]">
-      {/* Hero Section */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-[var(--dark-bg)] via-[var(--dark-bg-secondary)] to-[var(--dark-bg)] py-20 lg:py-28">
+    <>
+      <SEO
+        title="Contact Us | Get Your Free BPO Consultation | SageStone Inc"
+        description="Ready to scale your business? Contact SageStone Inc for a free consultation. We'll create a tailored plan for your customer support, virtual assistant, or eCommerce needs. Response within 24 hours."
+        keywords="contact BPO agency, free consultation, virtual assistant inquiry, customer support quote, outsourcing consultation"
+        canonical="https://www.sagestoneinc.com/contact"
+        ogTitle="Contact SageStone Inc | Free BPO Consultation"
+        ogDescription="Get your free consultation today. Tell us about your business needs and we'll create a tailored plan. Response within 24 hours."
+      />
+      <div className="min-h-screen bg-[var(--dark-bg)]">
+        {/* Hero Section */}
+        <section className="relative overflow-hidden bg-gradient-to-br from-[var(--dark-bg)] via-[var(--dark-bg-secondary)] to-[var(--dark-bg)] py-20 lg:py-28">
         <div className="max-w-7xl mx-auto px-6">
           <div className="max-w-3xl mx-auto text-center">
             <Badge className="mb-6 bg-[var(--color-primary-400)]/10 text-[var(--color-primary-400)] border-[var(--color-primary-400)]/30">
@@ -302,5 +312,6 @@ export function ContactPage({ onNavigate }: ContactPageProps) {
         </div>
       </section>
     </div>
+    </>
   );
 }

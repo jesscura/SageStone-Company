@@ -1,4 +1,5 @@
 import { Button } from "../components/ui/button";
+import { SEO } from "../components/SEO";
 import { Badge } from "../components/ui/badge";
 import { Card } from "../components/ui/card";
 import { ImageWithFallback } from "../components/figma/ImageWithFallback";
@@ -125,19 +126,28 @@ export function CareersPage({ onNavigate }: CareersPageProps) {
   ];
 
   return (
-    <div className="min-h-screen bg-white">
-      {/* Hero Section */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-[var(--color-primary-100)] via-white to-muted py-20 lg:py-28">
+    <>
+      <SEO
+        title="Careers | Join Our Remote Team | SageStone Inc"
+        description="Join SageStone Inc's remote team. We're hiring customer support specialists, virtual assistants, and operations professionals. Work from anywhere with competitive pay and growth opportunities."
+        keywords="remote BPO jobs, virtual assistant careers, customer support jobs, work from home opportunities, BPO careers"
+        canonical="https://www.sagestoneinc.com/careers"
+        ogTitle="Careers at SageStone Inc | Remote BPO Opportunities"
+        ogDescription="Join our growing remote team. Customer support, virtual assistant, and operations roles available. Competitive pay, flexible schedule, career growth."
+      />
+      <div className="min-h-screen bg-[var(--dark-bg)]">
+        {/* Hero Section */}
+        <section className="relative overflow-hidden bg-gradient-to-br from-[var(--dark-bg)] via-[var(--dark-bg-secondary)] to-[var(--dark-bg)] py-20 lg:py-28">
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
-              <Badge className="mb-6 bg-white/90 text-primary border-[var(--color-primary-400)]/30">
+              <Badge className="mb-6 bg-[var(--color-primary-400)]/10 text-[var(--color-primary-400)] border-[var(--color-primary-400)]/30">
                 Join Our Team
               </Badge>
-              <h1 className="text-foreground mb-6">
+              <h1 className="text-white mb-6">
                 Build your career with <span className="gradient-text">SageStone Inc</span>
               </h1>
-              <p className="text-xl text-muted-foreground leading-relaxed mb-8">
+              <p className="text-xl text-[var(--dark-text-muted)] leading-relaxed mb-8">
                 We're looking for talented, accountable professionals who want to grow with us. 
                 Join a team where your work matters and your development is a priority.
               </p>
@@ -172,10 +182,10 @@ export function CareersPage({ onNavigate }: CareersPageProps) {
       <section className="py-20 lg:py-28">
         <div className="max-w-7xl mx-auto px-6">
           <ScrollAnimation animation="fadeInUp" className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="text-foreground mb-4">
+            <h2 className="text-white mb-4">
               Why work with <span className="gradient-text">SageStone Inc</span>
             </h2>
-            <p className="text-xl text-muted-foreground">
+            <p className="text-xl text-[var(--dark-text-muted)]">
               We believe in building teams, not just filling roles
             </p>
           </ScrollAnimation>
@@ -185,10 +195,10 @@ export function CareersPage({ onNavigate }: CareersPageProps) {
               <ScrollAnimation key={index} animation="fadeInUp" delay={index * 100}>
                 <Card className="p-6 border-border hover:border-[var(--color-primary-400)]/30 hover:shadow-lg transition-all h-full">
                   <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[var(--color-primary-400)]/10 to-accent/10 flex items-center justify-center mb-4">
-                    <benefit.icon className="w-6 h-6 text-primary" aria-hidden="true" />
+                    <benefit.icon className="w-6 h-6 text-white" aria-hidden="true" />
                   </div>
-                  <h4 className="text-foreground mb-2">{benefit.title}</h4>
-                  <p className="text-muted-foreground text-sm">{benefit.description}</p>
+                  <h4 className="text-white mb-2">{benefit.title}</h4>
+                  <p className="text-[var(--dark-text-muted)] text-sm">{benefit.description}</p>
                 </Card>
               </ScrollAnimation>
             ))}
@@ -212,13 +222,13 @@ export function CareersPage({ onNavigate }: CareersPageProps) {
             </ScrollAnimation>
 
             <ScrollAnimation animation="fadeInRight">
-              <Badge className="mb-6 bg-white text-primary border-[var(--color-primary-400)]/20">
+              <Badge className="mb-6 bg-[var(--color-primary-400)]/10 text-[var(--color-primary-400)] border-[var(--color-primary-400)]/30">
                 Our Culture
               </Badge>
-              <h2 className="text-foreground mb-6">
+              <h2 className="text-white mb-6">
                 Accountability over <span className="gradient-text">micromanagement</span>
               </h2>
-              <p className="text-lg text-muted-foreground leading-relaxed mb-6">
+              <p className="text-lg text-[var(--dark-text-muted)] leading-relaxed mb-6">
                 At SageStone Inc, we trust our team members to deliver results. We provide the training, 
                 tools, and support you need to succeed — then we get out of your way.
               </p>
@@ -226,7 +236,7 @@ export function CareersPage({ onNavigate }: CareersPageProps) {
                 {values.map((value, index) => (
                   <li key={index} className="flex items-start gap-3">
                     <CheckCircle2 className="w-5 h-5 text-primary shrink-0 mt-0.5" aria-hidden="true" />
-                    <span className="text-muted-foreground">{value}</span>
+                    <span className="text-[var(--dark-text-muted)]">{value}</span>
                   </li>
                 ))}
               </ul>
@@ -239,10 +249,10 @@ export function CareersPage({ onNavigate }: CareersPageProps) {
       <section id="open-positions" className="py-20 lg:py-28">
         <div className="max-w-7xl mx-auto px-6">
           <ScrollAnimation animation="fadeInUp" className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="text-foreground mb-4">
+            <h2 className="text-white mb-4">
               Open <span className="gradient-text">positions</span>
             </h2>
-            <p className="text-xl text-muted-foreground">
+            <p className="text-xl text-[var(--dark-text-muted)]">
               Find your next opportunity with SageStone Inc
             </p>
           </ScrollAnimation>
@@ -254,7 +264,7 @@ export function CareersPage({ onNavigate }: CareersPageProps) {
                   <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-6">
                     <div className="flex-1">
                       <div className="flex flex-wrap items-center gap-3 mb-3">
-                        <h3 className="text-xl text-foreground">{position.title}</h3>
+                        <h3 className="text-xl text-white">{position.title}</h3>
                         <div className="flex gap-2">
                           <Badge variant="secondary" className="bg-[var(--color-primary-100)] text-primary border-none">
                             <Briefcase className="w-3 h-3 mr-1" aria-hidden="true" />
@@ -266,10 +276,10 @@ export function CareersPage({ onNavigate }: CareersPageProps) {
                           </Badge>
                         </div>
                       </div>
-                      <p className="text-muted-foreground mb-4">{position.description}</p>
+                      <p className="text-[var(--dark-text-muted)] mb-4">{position.description}</p>
                       <div className="grid sm:grid-cols-2 gap-2">
                         {position.requirements.map((req, i) => (
-                          <div key={i} className="flex items-start gap-2 text-sm text-muted-foreground">
+                          <div key={i} className="flex items-start gap-2 text-sm text-[var(--dark-text-muted)]">
                             <CheckCircle2 className="w-4 h-4 text-primary shrink-0 mt-0.5" aria-hidden="true" />
                             {req}
                           </div>
@@ -308,21 +318,21 @@ export function CareersPage({ onNavigate }: CareersPageProps) {
             <Button
               size="lg"
               onClick={() => onNavigate("contact")}
-              className="bg-white !text-primary hover:bg-white/90 transition-lift hover-lift min-w-[44px] min-h-[44px]"
+              className="bg-[var(--color-primary-400)] !text-white hover:bg-primary/90 transition-lift hover-lift min-w-[44px] min-h-[44px]"
               aria-label="Contact us with your resume"
             >
-              <span className="text-primary">Send Your Resume</span>
-              <ArrowRight className="w-4 h-4 ml-2 text-primary" aria-hidden="true" />
+              <span className="text-white">Send Your Resume</span>
+              <ArrowRight className="w-4 h-4 ml-2 text-white" aria-hidden="true" />
             </Button>
           </ScrollAnimation>
         </div>
       </section>
 
       {/* SEO Footer */}
-      <section className="py-12 bg-white border-t border-border">
+      <section className="py-12 bg-[var(--dark-bg)] border-t border-[var(--dark-surface)]">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center">
-            <p className="text-sm text-muted-foreground">
+            <p className="text-sm text-[var(--dark-text-muted)]">
               <strong>Careers at SageStone Inc:</strong> Remote customer support jobs, virtual assistant positions, 
               eCommerce support roles, property coordination careers, and back-office operations opportunities. 
               Join our global team and build your career from anywhere.
@@ -331,5 +341,6 @@ export function CareersPage({ onNavigate }: CareersPageProps) {
         </div>
       </section>
     </div>
+    </>
   );
 }

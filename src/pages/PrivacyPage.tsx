@@ -1,4 +1,5 @@
 import { Badge } from "../components/ui/badge";
+import { SEO } from "../components/SEO";
 import { Card } from "../components/ui/card";
 import { ScrollAnimation } from "../components/ScrollAnimation";
 import { Shield, Mail } from "lucide-react";
@@ -11,32 +12,41 @@ export function PrivacyPage({ onNavigate }: PrivacyPageProps) {
   const lastUpdated = "January 1, 2025";
 
   return (
-    <div className="min-h-screen bg-white">
-      {/* Hero Section */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-[var(--color-primary-100)] via-white to-muted py-16 lg:py-20">
+    <>
+      <SEO
+        title="Privacy Policy | Data Protection & Security | SageStone Inc"
+        description="Learn how SageStone Inc protects your data and privacy. Our comprehensive privacy policy covers data collection, usage, security measures, and your rights."
+        keywords="privacy policy, data protection, information security, GDPR compliance, data privacy"
+        canonical="https://www.sagestoneinc.com/privacy"
+        ogTitle="Privacy Policy | SageStone Inc Data Protection"
+        ogDescription="Your privacy matters. Learn how we protect your data, ensure security, and respect your rights."
+      />
+      <div className="min-h-screen bg-[var(--dark-bg)]">
+        {/* Hero Section */}
+        <section className="relative overflow-hidden bg-gradient-to-br from-[var(--dark-bg)] via-[var(--dark-bg-secondary)] to-[var(--dark-bg)] py-16 lg:py-20">
         <div className="max-w-4xl mx-auto px-6 text-center">
-          <Badge className="mb-6 bg-white/90 text-primary border-[var(--color-primary-400)]/30">
+          <Badge className="mb-6 bg-[var(--color-primary-400)]/10 text-[var(--color-primary-400)] border-[var(--color-primary-400)]/30">
             <Shield className="w-3 h-3 mr-1" aria-hidden="true" />
             Privacy Policy
           </Badge>
-          <h1 className="text-foreground mb-4">
+          <h1 className="text-white mb-4">
             Privacy Policy
           </h1>
-          <p className="text-muted-foreground">
+          <p className="text-[var(--dark-text-muted)]">
             Last updated: {lastUpdated}
           </p>
         </div>
       </section>
 
       {/* Content */}
-      <section className="py-16 lg:py-20">
+      <section className="py-16 lg:py-20 bg-[var(--dark-bg)]">
         <div className="max-w-4xl mx-auto px-6">
           <ScrollAnimation animation="fadeInUp">
-            <Card className="p-8 lg:p-12 border-border">
+            <Card className="p-8 lg:p-12 bg-[var(--dark-bg-secondary)]/60 backdrop-blur-sm border-[var(--dark-surface)] shadow-lg">
               <div className="prose prose-lg max-w-none">
-                <div className="space-y-8 text-muted-foreground">
+                <div className="space-y-8 text-[var(--dark-text-muted)]">
                   <section>
-                    <h2 className="text-2xl text-foreground mb-4">Introduction</h2>
+                    <h2 className="text-2xl text-white mb-4">Introduction</h2>
                     <p>
                       SageStone Inc ("we," "our," or "us") respects your privacy and is committed to protecting 
                       your personal data. This Privacy Policy explains how we collect, use, disclose, and 
@@ -45,10 +55,10 @@ export function PrivacyPage({ onNavigate }: PrivacyPageProps) {
                   </section>
 
                   <section>
-                    <h2 className="text-2xl text-foreground mb-4">Information We Collect</h2>
+                    <h2 className="text-2xl text-white mb-4">Information We Collect</h2>
                     <p className="mb-4">We may collect information about you in a variety of ways, including:</p>
                     
-                    <h3 className="text-lg text-foreground mb-2">Personal Data</h3>
+                    <h3 className="text-lg text-white mb-2">Personal Data</h3>
                     <p className="mb-4">
                       When you contact us or use our services, we may ask for personally identifiable information, such as:
                     </p>
@@ -60,7 +70,7 @@ export function PrivacyPage({ onNavigate }: PrivacyPageProps) {
                       <li>Information about your business needs</li>
                     </ul>
 
-                    <h3 className="text-lg text-foreground mb-2">Usage Data</h3>
+                    <h3 className="text-lg text-white mb-2">Usage Data</h3>
                     <p>
                       We automatically collect certain information when you visit our website, including your IP address, 
                       browser type, operating system, referring URLs, access times, and pages viewed.
@@ -68,7 +78,7 @@ export function PrivacyPage({ onNavigate }: PrivacyPageProps) {
                   </section>
 
                   <section>
-                    <h2 className="text-2xl text-foreground mb-4">How We Use Your Information</h2>
+                    <h2 className="text-2xl text-white mb-4">How We Use Your Information</h2>
                     <p className="mb-4">We use the information we collect to:</p>
                     <ul className="list-disc pl-6 space-y-2">
                       <li>Provide, operate, and maintain our services</li>
@@ -82,7 +92,7 @@ export function PrivacyPage({ onNavigate }: PrivacyPageProps) {
                   </section>
 
                   <section>
-                    <h2 className="text-2xl text-foreground mb-4">Data Sharing and Disclosure</h2>
+                    <h2 className="text-2xl text-white mb-4">Data Sharing and Disclosure</h2>
                     <p className="mb-4">
                       We do not sell, trade, or rent your personal information to third parties. We may share your 
                       information in the following situations:
@@ -96,7 +106,7 @@ export function PrivacyPage({ onNavigate }: PrivacyPageProps) {
                   </section>
 
                   <section>
-                    <h2 className="text-2xl text-foreground mb-4">Data Security</h2>
+                    <h2 className="text-2xl text-white mb-4">Data Security</h2>
                     <p>
                       We implement appropriate technical and organizational security measures to protect your personal 
                       data against unauthorized access, alteration, disclosure, or destruction. However, no method of 
@@ -106,7 +116,7 @@ export function PrivacyPage({ onNavigate }: PrivacyPageProps) {
                   </section>
 
                   <section>
-                    <h2 className="text-2xl text-foreground mb-4">Data Retention</h2>
+                    <h2 className="text-2xl text-white mb-4">Data Retention</h2>
                     <p>
                       We retain your personal data only for as long as necessary to fulfill the purposes for which 
                       we collected it, including to satisfy any legal, accounting, or reporting requirements. When 
@@ -115,7 +125,7 @@ export function PrivacyPage({ onNavigate }: PrivacyPageProps) {
                   </section>
 
                   <section>
-                    <h2 className="text-2xl text-foreground mb-4">Your Rights</h2>
+                    <h2 className="text-2xl text-white mb-4">Your Rights</h2>
                     <p className="mb-4">Depending on your location, you may have the following rights regarding your personal data:</p>
                     <ul className="list-disc pl-6 space-y-2">
                       <li><strong>Access:</strong> Request access to your personal data</li>
@@ -128,7 +138,7 @@ export function PrivacyPage({ onNavigate }: PrivacyPageProps) {
                   </section>
 
                   <section>
-                    <h2 className="text-2xl text-foreground mb-4">Cookies and Tracking Technologies</h2>
+                    <h2 className="text-2xl text-white mb-4">Cookies and Tracking Technologies</h2>
                     <p>
                       We may use cookies and similar tracking technologies to track activity on our website and 
                       hold certain information. Cookies are small data files stored on your device. You can 
@@ -138,7 +148,7 @@ export function PrivacyPage({ onNavigate }: PrivacyPageProps) {
                   </section>
 
                   <section>
-                    <h2 className="text-2xl text-foreground mb-4">Third-Party Links</h2>
+                    <h2 className="text-2xl text-white mb-4">Third-Party Links</h2>
                     <p>
                       Our website may contain links to third-party websites. We have no control over and assume 
                       no responsibility for the content, privacy policies, or practices of any third-party sites 
@@ -147,7 +157,7 @@ export function PrivacyPage({ onNavigate }: PrivacyPageProps) {
                   </section>
 
                   <section>
-                    <h2 className="text-2xl text-foreground mb-4">Children's Privacy</h2>
+                    <h2 className="text-2xl text-white mb-4">Children's Privacy</h2>
                     <p>
                       Our services are not intended for individuals under the age of 18. We do not knowingly 
                       collect personal data from children. If we become aware that we have collected personal 
@@ -156,7 +166,7 @@ export function PrivacyPage({ onNavigate }: PrivacyPageProps) {
                   </section>
 
                   <section>
-                    <h2 className="text-2xl text-foreground mb-4">Changes to This Privacy Policy</h2>
+                    <h2 className="text-2xl text-white mb-4">Changes to This Privacy Policy</h2>
                     <p>
                       We may update this Privacy Policy from time to time. We will notify you of any changes by 
                       posting the new Privacy Policy on this page and updating the "Last updated" date. You are 
@@ -165,15 +175,15 @@ export function PrivacyPage({ onNavigate }: PrivacyPageProps) {
                   </section>
 
                   <section>
-                    <h2 className="text-2xl text-foreground mb-4">Contact Us</h2>
+                    <h2 className="text-2xl text-white mb-4">Contact Us</h2>
                     <p className="mb-4">
                       If you have any questions about this Privacy Policy or our data practices, please contact us:
                     </p>
-                    <div className="flex items-center gap-2 p-4 bg-muted rounded-lg">
-                      <Mail className="w-5 h-5 text-primary" aria-hidden="true" />
+                    <div className="flex items-center gap-2 p-4 bg-[var(--dark-bg)]/50 rounded-lg">
+                      <Mail className="w-5 h-5 text-[var(--color-primary-400)]" aria-hidden="true" />
                       <button
                         onClick={() => onNavigate("contact")}
-                        className="text-primary hover:underline"
+                        className="text-[var(--color-primary-400)] hover:underline"
                       >
                         Contact Us
                       </button>
@@ -186,5 +196,6 @@ export function PrivacyPage({ onNavigate }: PrivacyPageProps) {
         </div>
       </section>
     </div>
+    </>
   );
 }
