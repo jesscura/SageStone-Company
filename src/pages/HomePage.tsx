@@ -5,6 +5,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "..
 import { ScrollAnimation } from "../components/ScrollAnimation";
 import { ImageWithFallback } from "../components/figma/ImageWithFallback";
 import { HomePageHero } from "./HomePageHero";
+import { SEO } from "../components/SEO";
 import { 
   ArrowRight, 
   TrendingUp,
@@ -157,11 +158,20 @@ export function HomePage({ onNavigate }: HomePageProps) {
   ];
 
   return (
-    <div className="min-h-screen bg-[var(--dark-bg)]">
-      {/* Hero Section - New Conversion-focused Hero */}
-      <HomePageHero
-        onPrimaryClick={() => onNavigate("contact")}
-        onSecondaryClick={scrollToHowItWorks}
+    <>
+      <SEO
+        title="SageStone Inc | Intelligent Digital Marketing & Virtual Operations Agency"
+        description="Focus on the big bets. SageStone builds intelligent virtual support and operations teams that handle tickets, back-office work, and customer conversations. Trusted by VC-backed ecommerce brands, lean SaaS teams, and growing property portfolios."
+        keywords="BPO services, business process outsourcing, virtual assistant services, customer support outsourcing, remote teams, Shopify support specialists, eCommerce customer service, property management support, back-office solutions, customer success outsourcing"
+        canonical="https://www.sagestoneinc.com/"
+        ogTitle="SageStone Inc | BPO Services, Virtual Assistants & Customer Support Outsourcing"
+        ogDescription="Scale your business 40% faster with dedicated remote teams. Customer support, virtual assistants, Shopify management, and back-office operations. 35% cost savings. Free consultation."
+      />
+      <div className="min-h-screen bg-[var(--dark-bg)]">
+        {/* Hero Section - New Conversion-focused Hero */}
+        <HomePageHero
+          onPrimaryClick={() => onNavigate("contact")}
+          onSecondaryClick={scrollToHowItWorks}
       />
 
       {/* Trust Signals Bar */}
@@ -536,5 +546,6 @@ export function HomePage({ onNavigate }: HomePageProps) {
         </div>
       </section>
     </div>
+    </>
   );
 }

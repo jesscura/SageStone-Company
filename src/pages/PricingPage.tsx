@@ -1,4 +1,5 @@
 import { Button } from "../components/ui/button";
+import { SEO } from "../components/SEO";
 import { Badge } from "../components/ui/badge";
 import { Card } from "../components/ui/card";
 import { CheckCircle2, ArrowRight, Sparkles } from "lucide-react";
@@ -67,9 +68,18 @@ export function PricingPage({ onNavigate }: PricingPageProps) {
   ];
 
   return (
-    <div className="min-h-screen bg-[var(--dark-bg)]">
-      {/* Hero Section */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-[var(--dark-bg)] via-[var(--dark-bg-secondary)] to-[var(--dark-bg)] py-20 lg:py-28">
+    <>
+      <SEO
+        title="Pricing | Flexible BPO Plans Starting at $1,200/month | SageStone Inc"
+        description="Transparent BPO pricing with no hidden fees. Starter plans from $1,200/month, dedicated teams from $2,500/seat. Save 35% compared to in-house hiring."
+        keywords="BPO pricing, virtual assistant cost, customer support pricing, outsourcing rates, dedicated team pricing"
+        canonical="https://www.sagestoneinc.com/pricing"
+        ogTitle="BPO Pricing | Flexible Plans with 35% Cost Savings"
+        ogDescription="Affordable BPO services starting at $1,200/month. No hidden fees, flexible contracts, 35% cost savings. Get a custom quote today."
+      />
+      <div className="min-h-screen bg-[var(--dark-bg)]">
+        {/* Hero Section */}
+        <section className="relative overflow-hidden bg-gradient-to-br from-[var(--dark-bg)] via-[var(--dark-bg-secondary)] to-[var(--dark-bg)] py-20 lg:py-28">
         <div className="max-w-7xl mx-auto px-6">
           <div className="max-w-3xl mx-auto text-center">
             <Badge className="mb-6 bg-[var(--color-primary-400)]/10 text-[var(--color-primary-400)] border-[var(--color-primary-400)]/30">
@@ -277,5 +287,6 @@ export function PricingPage({ onNavigate }: PricingPageProps) {
         </div>
       </section>
     </div>
+    </>
   );
 }

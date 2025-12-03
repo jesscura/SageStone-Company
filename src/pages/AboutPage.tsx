@@ -3,6 +3,7 @@ import { Badge } from "../components/ui/badge";
 import { Card } from "../components/ui/card";
 import { ImageWithFallback } from "../components/figma/ImageWithFallback";
 import { ScrollAnimation } from "../components/ScrollAnimation";
+import { SEO } from "../components/SEO";
 import { 
   Target, 
   Users, 
@@ -96,12 +97,21 @@ export function AboutPage({ onNavigate }: AboutPageProps) {
   ];
 
   return (
-    <div className="min-h-screen bg-[var(--dark-bg)]">
-      {/* Hero Section */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-[var(--dark-bg)] via-[var(--dark-bg-secondary)] to-[var(--dark-bg)] py-20 lg:py-28">
-        {/* Animated gradient orbs */}
-        <div className="absolute top-20 right-1/4 w-96 h-96 bg-[var(--color-primary-400)]/20 rounded-full blur-3xl animate-pulse" aria-hidden="true" />
-        <div className="absolute bottom-20 left-1/4 w-80 h-80 bg-[var(--color-primary-400)]/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} aria-hidden="true" />
+    <>
+      <SEO
+        title="About Us | SageStone Inc - Your Trusted BPO Partner"
+        description="Learn about SageStone Inc, a leading BPO agency offering virtual assistants, customer support outsourcing, and eCommerce management. Meet our team of experienced professionals dedicated to scaling your business."
+        keywords="about SageStone, BPO company, virtual assistant team, customer support experts, eCommerce specialists, business process outsourcing team"
+        canonical="https://www.sagestoneinc.com/aboutus"
+        ogTitle="About SageStone Inc | BPO & Virtual Operations Experts"
+        ogDescription="Meet the team behind SageStone Inc. We're a dedicated BPO agency helping businesses scale through expert virtual operations, customer support, and back-office management."
+      />
+      <div className="min-h-screen bg-[var(--dark-bg)]">
+        {/* Hero Section */}
+        <section className="relative overflow-hidden bg-gradient-to-br from-[var(--dark-bg)] via-[var(--dark-bg-secondary)] to-[var(--dark-bg)] py-20 lg:py-28">
+          {/* Animated gradient orbs */}
+          <div className="absolute top-20 right-1/4 w-96 h-96 bg-[var(--color-primary-400)]/20 rounded-full blur-3xl animate-pulse" aria-hidden="true" />
+          <div className="absolute bottom-20 left-1/4 w-80 h-80 bg-[var(--color-primary-400)]/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} aria-hidden="true" />
         
         <div className="relative max-w-7xl mx-auto px-6">
           <div className="max-w-4xl mx-auto text-center">
@@ -460,5 +470,6 @@ export function AboutPage({ onNavigate }: AboutPageProps) {
         </div>
       </section>
     </div>
+    </>
   );
 }

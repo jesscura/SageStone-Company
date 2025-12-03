@@ -1,4 +1,5 @@
 import { Button } from "../components/ui/button";
+import { SEO } from "../components/SEO";
 import { Badge } from "../components/ui/badge";
 import { Card } from "../components/ui/card";
 import { ImageWithFallback } from "../components/figma/ImageWithFallback";
@@ -186,12 +187,21 @@ export function ServicesPage({ onNavigate }: ServicesPageProps) {
   ];
 
   return (
-    <div className="min-h-screen bg-[var(--dark-bg)]">
-      {/* Hero Section */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-[var(--dark-bg)] via-[var(--dark-bg-secondary)] to-[var(--dark-bg)] py-20 lg:py-28">
-        {/* Animated gradient orbs */}
-        <div className="absolute top-20 left-1/4 w-96 h-96 bg-[var(--color-primary-400)]/20 rounded-full blur-3xl animate-pulse" aria-hidden="true" />
-        <div className="absolute bottom-20 right-1/4 w-80 h-80 bg-[var(--color-primary-400)]/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} aria-hidden="true" />
+    <>
+      <SEO
+        title="BPO Services | Virtual Assistants, Customer Support & eCommerce Management"
+        description="Comprehensive BPO services including 24/7 customer support outsourcing, virtual assistant services, Shopify & eCommerce management, back-office operations, and property coordination. Scale your team with SageStone Inc."
+        keywords="BPO services, customer support outsourcing, virtual assistant services, Shopify management, eCommerce support, back-office operations, property management services"
+        canonical="https://www.sagestoneinc.com/services"
+        ogTitle="BPO Services | Customer Support, Virtual Assistants & More"
+        ogDescription="Expert BPO services to scale your business. Customer support, virtual assistants, Shopify management, back-office operations. Get 35% cost savings with dedicated remote teams."
+      />
+      <div className="min-h-screen bg-[var(--dark-bg)]">
+        {/* Hero Section */}
+        <section className="relative overflow-hidden bg-gradient-to-br from-[var(--dark-bg)] via-[var(--dark-bg-secondary)] to-[var(--dark-bg)] py-20 lg:py-28">
+          {/* Animated gradient orbs */}
+          <div className="absolute top-20 left-1/4 w-96 h-96 bg-[var(--color-primary-400)]/20 rounded-full blur-3xl animate-pulse" aria-hidden="true" />
+          <div className="absolute bottom-20 right-1/4 w-80 h-80 bg-[var(--color-primary-400)]/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} aria-hidden="true" />
         
         <div className="relative max-w-7xl mx-auto px-6">
           <div className="max-w-3xl mx-auto text-center">
@@ -358,5 +368,6 @@ export function ServicesPage({ onNavigate }: ServicesPageProps) {
         </div>
       </section>
     </div>
+    </>
   );
 }

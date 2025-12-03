@@ -1,4 +1,5 @@
 import { useState, useEffect, useMemo, useCallback } from "react";
+import { SEO } from "../components/SEO";
 import { Button } from "../components/ui/button";
 import { Badge } from "../components/ui/badge";
 import { Card } from "../components/ui/card";
@@ -266,9 +267,18 @@ export function BlogPage({ onNavigate }: BlogPageProps) {
   }
 
   return (
-    <div className="min-h-screen bg-[var(--dark-bg)]">
-      {/* Hero Section */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-[var(--dark-bg)] via-[var(--dark-bg-secondary)] to-[var(--dark-bg)] py-20 lg:py-28">
+    <>
+      <SEO
+        title="BPO Blog | Expert Insights on Outsourcing & Virtual Teams | SageStone Inc"
+        description="Expert insights on business process outsourcing, virtual assistant management, customer support best practices, and scaling remote operations. Learn from BPO industry leaders."
+        keywords="BPO blog, outsourcing tips, virtual assistant guide, customer support best practices, remote team management"
+        canonical="https://www.sagestoneinc.com/blog"
+        ogTitle="BPO Blog | Expert Outsourcing Insights & Best Practices"
+        ogDescription="Learn from BPO experts about outsourcing, virtual teams, customer support, and scaling your business with remote operations."
+      />
+      <div className="min-h-screen bg-[var(--dark-bg)]">
+        {/* Hero Section */}
+        <section className="relative overflow-hidden bg-gradient-to-br from-[var(--dark-bg)] via-[var(--dark-bg-secondary)] to-[var(--dark-bg)] py-20 lg:py-28">
         <div className="max-w-7xl mx-auto px-6">
           <ScrollAnimation animation="fadeInUp" className="max-w-3xl mx-auto text-center">
             <Badge className="mb-6 bg-[var(--color-primary-400)]/10 text-[var(--color-primary-400)] border-[var(--color-primary-400)]/30">
@@ -518,5 +528,6 @@ export function BlogPage({ onNavigate }: BlogPageProps) {
         </div>
       </section>
     </div>
+    </>
   );
 }

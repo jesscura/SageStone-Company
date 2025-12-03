@@ -1,4 +1,5 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
+import { BrowserRouter as Router, Routes, Route, useNavigate, useLocation } from "react-router-dom";
 import { Navigation } from "./components/Navigation";
 import { Footer } from "./components/Footer";
 import { HomePage } from "./pages/HomePage";
@@ -14,55 +15,89 @@ import { CareersPage } from "./pages/CareersPage";
 import { PrivacyPage } from "./pages/PrivacyPage";
 import { TermsPage } from "./pages/TermsPage";
 
-export default function App() {
-  const [currentPage, setCurrentPage] = useState("home");
+function ScrollToTop() {
+  const location = useLocation();
 
-  // Scroll to top on page change
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
-  }, [currentPage]);
+  }, [location.pathname]);
+
+  return null;
+}
+
+function AppContent() {
+  const navigate = useNavigate();
+  const location = useLocation();
 
   const handleNavigate = (page: string) => {
-    setCurrentPage(page);
+    const pathMap: Record<string, string> = {
+      "home": "/",
+      "services": "/services",
+      "industries": "/industries",
+      "how-it-works": "/howitworks",
+      "pricing": "/pricing",
+      "contact": "/contact",
+      "blog": "/blog",
+      "case-studies": "/casestudies",
+      "about": "/aboutus",
+      "careers": "/careers",
+      "privacy": "/privacy",
+      "terms": "/terms"
+    };
+    
+    navigate(pathMap[page] || "/");
   };
 
-  const renderPage = () => {
-    switch (currentPage) {
-      case "services":
-        return <ServicesPage onNavigate={handleNavigate} />;
-      case "industries":
-        return <IndustriesPage onNavigate={handleNavigate} />;
-      case "how-it-works":
-        return <HowItWorksPage onNavigate={handleNavigate} />;
-      case "pricing":
-        return <PricingPage onNavigate={handleNavigate} />;
-      case "contact":
-        return <ContactPage onNavigate={handleNavigate} />;
-      case "blog":
-        return <BlogPage onNavigate={handleNavigate} />;
-      case "case-studies":
-        return <CaseStudiesPage onNavigate={handleNavigate} />;
-      case "about":
-        return <AboutPage onNavigate={handleNavigate} />;
-      case "careers":
-        return <CareersPage onNavigate={handleNavigate} />;
-      case "privacy":
-        return <PrivacyPage onNavigate={handleNavigate} />;
-      case "terms":
-        return <TermsPage onNavigate={handleNavigate} />;
-      default:
-        return <HomePage onNavigate={handleNavigate} />;
-    }
+  // Determine current page from location
+  const getCurrentPage = () => {
+    const path = location.pathname;
+    const pageMap: Record<string, string> = {
+      "/": "home",
+      "/services": "services",
+      "/industries": "industries",
+      "/howitworks": "how-it-works",
+      "/pricing": "pricing",
+      "/contact": "contact",
+      "/blog": "blog",
+      "/casestudies": "case-studies",
+      "/aboutus": "about",
+      "/careers": "careers",
+      "/privacy": "privacy",
+      "/terms": "terms"
+    };
+    return pageMap[path] || "home";
   };
 
   return (
     <div className="min-h-screen bg-[#0A0118]">
+      <ScrollToTop />
       <Navigation
-        currentPage={currentPage}
+        currentPage={getCurrentPage()}
         onNavigate={handleNavigate}
       />
-      {renderPage()}
+      <Routes>
+        <Route path="/" element={<HomePage onNavigate={handleNavigate} />} />
+        <Route path="/services" element={<ServicesPage onNavigate={handleNavigate} />} />
+        <Route path="/industries" element={<IndustriesPage onNavigate={handleNavigate} />} />
+        <Route path="/howitworks" element={<HowItWorksPage onNavigate={handleNavigate} />} />
+        <Route path="/pricing" element={<PricingPage onNavigate={handleNavigate} />} />
+        <Route path="/contact" element={<ContactPage onNavigate={handleNavigate} />} />
+        <Route path="/blog" element={<BlogPage onNavigate={handleNavigate} />} />
+        <Route path="/casestudies" element={<CaseStudiesPage onNavigate={handleNavigate} />} />
+        <Route path="/aboutus" element={<AboutPage onNavigate={handleNavigate} />} />
+        <Route path="/careers" element={<CareersPage onNavigate={handleNavigate} />} />
+        <Route path="/privacy" element={<PrivacyPage onNavigate={handleNavigate} />} />
+        <Route path="/terms" element={<TermsPage onNavigate={handleNavigate} />} />
+      </Routes>
       <Footer onNavigate={handleNavigate} />
     </div>
+  );
+}
+
+export default function App() {
+  return (
+    <Router>
+      <AppContent />
+    </Router>
   );
 }
